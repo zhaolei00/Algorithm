@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="75fda7a6-af1f-4cb1-9ec4-7654387b2f1e" name="Changes" comment="" />
+    <list default="true" id="75fda7a6-af1f-4cb1-9ec4-7654387b2f1e" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/hand/Sort.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/hand/Sort.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -46,7 +48,20 @@
     "nodejs_package_manager_path": "npm"
   }
 }]]></component>
-  <component name="RunManager" selected="Application.Sort">
+  <component name="RunManager" selected="Application.BinaryPrint">
+    <configuration name="BinaryPrint" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.example.hand.BinaryPrint" />
+      <module name="Algorithm" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.hand.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.example.Main" />
       <module name="Algorithm" />
@@ -88,6 +103,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.BinaryPrint" />
         <item itemvalue="Application.Sort" />
         <item itemvalue="Application.NFactorial" />
         <item itemvalue="Application.Main" />
@@ -102,7 +118,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1680833784074</updated>
-      <workItem from="1680833786430" duration="2269000" />
+      <workItem from="1680833786430" duration="3013000" />
     </task>
     <servers />
   </component>
