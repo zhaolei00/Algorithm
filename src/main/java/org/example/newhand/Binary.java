@@ -1,4 +1,4 @@
-package org.example.hand;
+package org.example.newhand;
 
 import java.util.Arrays;
 
