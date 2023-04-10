@@ -1,4 +1,4 @@
-package org.example.newhand.linkedlist;
+package com.zl.newhand.linkedlist;
 
 import lombok.Data;
 

@@ -1,4 +1,4 @@
-package org.example.newhand;
+package com.zl.newhand;
 /**
  * 新手算法学习包
  */
