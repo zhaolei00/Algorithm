@@ -9,7 +9,7 @@ import java.util.Arrays;
  *      二分法相关算法
  *          什么情况下可以使用二分: 根据目标，如果二分之后，某一侧一定会有这个结果就可以二分。
  */
-public class Binary {
+public class BinarySearch {
 
     public static void main(String[] args) {
         System.out.println("测试开始");
@@ -28,40 +28,6 @@ public class Binary {
 
     // 对数器
     private static class RightComparator {
-
-        // 获取数组，升序且不重复
-        private static int[] getRandomArr(int maxLength, int maxValue) {
-            int length = (int) (Math.random() * maxLength) + 1;
-            int[] arr = new int[length];
-            for (int i = 0; i < length; i++) {
-                arr[i] = (int) (Math.random() * maxValue);
-            }
-            // 去重
-            arr = Arrays.stream(arr).distinct().toArray();
-            Arrays.sort(arr);
-            return arr;
-        }
-
-        // 获取数组，升序, 可能重复
-        private static int[] getRandomArr2(int maxLength, int maxValue) {
-            int length = (int) (Math.random() * maxLength) + 1;
-            int[] arr = new int[length];
-            for (int i = 0; i < length; i++) {
-                arr[i] = (int) (Math.random() * maxValue);
-            }
-            Arrays.sort(arr);
-            return arr;
-        }
-
-        private static int getIndex(int[] arr, int num) {
-            int ans = -1;
-            for (int i = 0; i < arr.length; i++) {
-                if (arr[i] <= num) {
-                    ans = i;
-                }
-            }
-            return ans;
-        }
 
         // 获取数组，无序, 相邻位置不相等
         private static int[] getRandomArr3(int maxLength, int maxValue) {
@@ -103,7 +69,8 @@ public class Binary {
             // 左右指针还没找到，不存在此值，跳出.
             while (left <= right) {
                 // 找到中间位置进行比较
-                int mid = (left + right) >> 1;
+                // mid = (left + right) >> 1; // 不安全 L/2 + R/2 不可以，因为除是向下取反的。
+                int mid = left + (right - left) >> 1;
                 // 找到返回
                 if (arr[mid] == num) {
                     return mid;
@@ -166,9 +133,8 @@ public class Binary {
         }
     }
 
-    //===============局部最小定义: [0] < [1] 0位置是局部最小 [n-2] > [n-1] n-1位置局部最小 [i-1]>[i]<[i+1] i位置局部最小=====================
+    //====局部最小定义: [0] < [1] 0位置是局部最小 [n-2] > [n-1] n-1位置局部最小 [i-1]>[i]<[i+1] i位置局部最小======
     //===============【题目】给定arr数组(无序，相邻两个位置不等), 找到任意一个局部最小位置=====================
-
     private static class Question4 {
         private static int getLocalMinimumIndex(int[] arr) {
             if (arr == null || arr.length < 2) {
