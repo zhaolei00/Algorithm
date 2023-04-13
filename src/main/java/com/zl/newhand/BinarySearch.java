@@ -133,7 +133,7 @@ public class BinarySearch {
         }
     }
 
-    //====局部最小定义: [0] < [1] 0位置是局部最小 [n-2] > [n-1] n-1位置局部最小 [i-1]>[i]<[i+1] i位置局部最小======
+    //====局部最小定义: [0]<[1] 0位置是局部最小, [n-2]>[n-1] n-1位置局部最小, [i-1]>[i]<[i+1] i位置局部最小===
     //===============【题目】给定arr数组(无序，相邻两个位置不等), 找到任意一个局部最小位置=====================
     private static class Question4 {
         private static int getLocalMinimumIndex(int[] arr) {
