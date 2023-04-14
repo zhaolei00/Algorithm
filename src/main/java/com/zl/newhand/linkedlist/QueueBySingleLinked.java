@@ -1,5 +1,7 @@
 package com.zl.newhand.linkedlist;
 
+import com.zl.newhand.linkedlist.interfaces.Queue;
+
 /**
  * @Author : zhaolei
  * @Date : Create in 2023/4/8 23:37

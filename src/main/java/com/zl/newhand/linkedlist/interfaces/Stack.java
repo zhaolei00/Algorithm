@@ -1,4 +1,4 @@
-package com.zl.newhand.linkedlist;
+package com.zl.newhand.linkedlist.interfaces;
 
 /**
  * @Author : zhaolei

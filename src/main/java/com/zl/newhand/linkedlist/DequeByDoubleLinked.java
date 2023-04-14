@@ -1,14 +1,16 @@
 package com.zl.newhand.linkedlist;
 
+import com.zl.newhand.linkedlist.interfaces.Deque;
+
 /**
  * @Author : zhaolei
  * @Date : Create in 2023/4/9 00:52
- * @Description : 双端队列
+ * @Description : 双端队列 双向链表实现
  */
-public class QueueByDoubleLinked<V> implements Deque<V>{
+public class DequeByDoubleLinked<V> implements Deque<V> {
 
     public static void main(String[] args) {
-        QueueByDoubleLinked<Integer> q = new QueueByDoubleLinked<>();
+        DequeByDoubleLinked<Integer> q = new DequeByDoubleLinked<>();
         q.firstOffer(1);
         q.lastOffer(7);
         q.firstOffer(3);
