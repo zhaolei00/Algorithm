@@ -69,6 +69,38 @@ public class XOR {
         return ans;
     }
 
+    //====【题目】给定arr数组, 有一种数出现K次，其他数都出现M次，M>1, K<M, 找到出现K次的数,如果这个数没有出现k次，返回-1=====================
+    private static int question4(int[] arr, int K, int M) {
+        int[] help = new int[32];
+        for (int num : arr) {
+            for (int j = 0; j < help.length; j++) {
+                help[j] += num >> j & 1;
+            }
+        }
+        int ans = 0;
+        for (int i = 0; i < help.length; i++) {
+            if (help[i] % M == 0) {
+                continue;
+            }
+            if (help[i] % M == K) {
+                ans |= 1 << i;
+            } else {
+                return -1;
+            }
+        }
+        if (ans == 0) {
+            int count = 0;
+            for (int num : arr) {
+                if (num == count) {
+                    count++;
+                }
+            }
+            if (count != K) {
+                return -1;
+            }
+        }
+        return ans;
+    }
     public static void main(String[] args) {
         int[] arr = {1, -2, -3, 4, 5, -2, 1, -3, 4, 5, 1, -3, 4, 5, 1, -3, 4, 5, 1, -3, 4, 5};
         System.out.println(question3(arr, 2, 5));
