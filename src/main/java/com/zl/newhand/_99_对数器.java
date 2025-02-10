@@ -11,5 +11,11 @@ package com.zl.newhand;
  *              3. 自己写的算法，是否正确，通过随机样本，比较2和3的结果。如果结果有差异，则算法有问题。
  *                 根据有问题的case，进行调试，找问题更快。
  */
-public class RightComparator {
+public class _99_对数器 {
+
+    // TODO 需要补充各种工具。例如: 生成随机长度和随机大小的数组。等等。
+    public static void main(String[] args) {
+        System.out.println();
+    }
+
 }
