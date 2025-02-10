@@ -8,33 +8,6 @@ package com.zl.newhand;
 public class Sort {
 
     /**
-     * 选择排序
-     * 思路:
-     * 找到 0 ~ N-1 位置的最小值和 0 位置交换
-     * 找到 1 ~ N-1 位置的最小值和 1 位置交换
-     * ... 以此类推
-     * 时间复杂度: o(N^2)
-     *
-     * @param arr
-     */
-    private static void selectSort(int[] arr) {
-        // 考虑边界值
-        if (arr == null || arr.length < 2) {
-            return;
-        }
-        // 0 ~ N-1 位置找出最小值和0交换
-        // 1 ~ N-1 位置找出最小值和1交换
-        int n = arr.length;
-        for (int i = 0; i < n; i++) {
-            int mixValueIndex = i;
-            for (int j = i + 1; j < n; j++) {
-                mixValueIndex = arr[mixValueIndex] > arr[j] ? j : mixValueIndex;
-            }
-            swap(arr, i, mixValueIndex);
-        }
-    }
-
-    /**
      * 冒泡排序
      * 思路:
      * 0 1    1 2    2 3     3 4    n-2 n-1    一对一对对比，如果左面大于右面，进行交换。N-1的位置确定
