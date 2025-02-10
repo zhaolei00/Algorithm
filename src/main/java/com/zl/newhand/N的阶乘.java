@@ -5,38 +5,7 @@ package com.zl.newhand;
  * @Date : Create in 2023/4/7 10:28
  * @Description : 给出一个N数(大于0)，计算 1! + 2! + 3! + N! 的结果
  */
-public class NFactorial {
-
-    /**
-     * N的阶乘
-     *
-     * @param N
-     * @return
-     */
-    private static int factorial(int N) {
-        int res = 1;
-        for (int i = 1; i <= N; i++) {
-            res *= i;
-        }
-        return res;
-    }
-
-    /**
-     * int ans = 1! + 2! + 3! + N!
-     *
-     * @param N
-     * @return
-     */
-    private static int N_FACTORIAL(int N) {
-        // 1! + 1!*2 + 2!*3
-        int res = 0;
-        int tmp = 1;
-        for (int i = 1; i <= N; i++) {
-            tmp = tmp * i;
-            res += tmp;
-        }
-        return res;
-    }
+public class N的阶乘 {
 
     //===============【题目】给定一个数组arr, 计算下标L到R位置上所有数的和。=====================
     // 思路: 前缀和数组，数组i位置是0到i位置所有数的和，所以计算下标L到R位置上所有数的和就是ans=[R]-[L-1],特殊情况，如果L为0，直接取[R]。
@@ -64,6 +33,43 @@ public class NFactorial {
         for (int i = 1; i < arr.length; i++) {
             help[i] += help[i - 1];
         }
+    }
+
+    /**
+     * 计算n的阶乘
+     * 时间复杂度 : o(n)
+     * 空间复杂度 : o(1)
+     */
+    public static int factorial_n(int n) {
+        int ans = 1;
+        for (int i = 1; i <= n; i++) {
+            ans *= i;
+        }
+        return ans;
+    }
+
+    /**
+     * 给定阶乘n， 计算ans = 1! + 2! + 3! ... + n!
+     * 时间复杂度 : o(n)
+     * 空间复杂度 : o(1)
+     */
+    public static int factorial_n_sum(int n) {
+        int ans = 0;
+        int temp = 1;
+        for (int i = 1; i <= n; i++) {
+            temp *= i;
+            ans += temp;
+        }
+        return ans;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(factorial_n(5));
+        System.out.println(factorial_n(4));
+        System.out.println(factorial_n(3));
+        System.out.println(factorial_n(2));
+        System.out.println(factorial_n(1));
+        System.out.println(factorial_n_sum(5));
     }
 
 }
