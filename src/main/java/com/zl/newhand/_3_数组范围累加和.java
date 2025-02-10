@@ -1,9 +1,6 @@
 package com.zl.newhand;
 
 /**
- * @Author zl
- * @Date 2025/2/10 18:10
- * @Description
  */
 public class _3_数组范围累加和 {
 

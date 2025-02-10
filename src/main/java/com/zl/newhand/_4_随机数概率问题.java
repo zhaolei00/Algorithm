@@ -1,13 +1,10 @@
 package com.zl.newhand;
 
 /**
- * @Author : zhaolei
- * @Date : Create in 2023/4/8 10:20
- * @Description :
  * 随机数
  * Math.random() 等概率返回 [0,1) 中的一个小数
  */
-public class MathRandom {
+public class _4_随机数概率问题 {
 
     // 等概率返回[0,1)区间的小数
     private static double equalProbability1() {

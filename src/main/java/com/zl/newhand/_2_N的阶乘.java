@@ -1,8 +1,6 @@
 package com.zl.newhand;
 
 /**
- * @Author : zhaolei
- * @Date : Create in 2023/4/7 10:28
  * @Description : 给出一个N数(大于0)，计算 1! + 2! + 3! + N! 的结果
  */
 public class _2_N的阶乘 {
