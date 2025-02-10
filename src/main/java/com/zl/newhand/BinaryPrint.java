@@ -7,11 +7,18 @@ package com.zl.newhand;
  */
 public class BinaryPrint {
 
-    private static void print(int num) {
+    public static String getIntegerBinary(int num) {
+        StringBuilder sb = new StringBuilder();
         for (int i = 31; i >= 0; i--) {
-            System.out.print((num & (1 << i)) == 0 ? "0" : "1");
+            sb.append((num & (1 << i)) == 0 ? "0" : "1");
         }
-        System.out.println();
+        return sb.toString();
+    }
+
+    public static void main(String[] args) {
+        System.out.println(getIntegerBinary(13));
+        System.out.println(getIntegerBinary(5));
+        System.out.println(getIntegerBinary(-5));
     }
 
 }
