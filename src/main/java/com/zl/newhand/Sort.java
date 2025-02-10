@@ -8,30 +8,6 @@ package com.zl.newhand;
 public class Sort {
 
     /**
-     * 插入排序
-     * 思路:
-     * 0 ~ 0 自然就有序，不用管
-     * 0 ～ 1 有序
-     * 0 ～ 2 有序
-     * 0 ～ N -1 有序
-     * ... 以此类推
-     * 时间复杂度: o(N^2)
-     *
-     * @param arr
-     */
-    private static void insertSort(int[] arr) {
-        if (arr == null || arr.length < 2) {
-            return;
-        }
-        int n = arr.length;
-        for (int i = 1; i < n; i++) {
-            for (int j = i; j >= 1 && arr[j - 1] > arr[j]; j--) {
-                swap(arr, j - 1, j);
-            }
-        }
-    }
-
-    /**
      * 数组中i位置和j位置数据进行交换
      */
     private static void swap(int[] arr, int i, int j) {
