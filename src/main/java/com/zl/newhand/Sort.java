@@ -8,32 +8,6 @@ package com.zl.newhand;
 public class Sort {
 
     /**
-     * 冒泡排序
-     * 思路:
-     * 0 1    1 2    2 3     3 4    n-2 n-1    一对一对对比，如果左面大于右面，进行交换。N-1的位置确定
-     * 0 1    1 2    2 3     3 4    n-3 n-2    一对一对对比，如果左面大于右面，进行交换。N-2的位置确定
-     * ... 以此类推
-     * 时间复杂度: o(N^2)
-     *
-     * @param arr
-     */
-    private static void bubbleSort(int[] arr) {
-        // 考虑边界
-        if (arr == null || arr.length < 2) {
-            return;
-        }
-        int n = arr.length;
-        for (int i = n - 1; i > 0; i--) {
-            // 0 ~ i 进行冒泡
-            for (int j = 1; j <= i; j++) {
-                if (arr[j - 1] > arr[j]) {
-                    swap(arr, j - 1, j);
-                }
-            }
-        }
-    }
-
-    /**
      * 插入排序
      * 思路:
      * 0 ~ 0 自然就有序，不用管
