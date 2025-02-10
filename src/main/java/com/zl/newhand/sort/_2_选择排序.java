@@ -7,7 +7,7 @@ import java.util.Arrays;
  * @Date 2025/2/10 11:55
  * @Description
  */
-public class 选择排序 {
+public class _2_选择排序 {
 
     /**
      * 思路:

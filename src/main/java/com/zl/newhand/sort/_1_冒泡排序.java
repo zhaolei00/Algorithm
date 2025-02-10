@@ -7,7 +7,7 @@ import java.util.Arrays;
  * @Date 2025/2/10 14:15
  * @Description
  */
-public class 冒泡排序 {
+public class _1_冒泡排序 {
 
     /**
      * 最大值就像水里的泡泡一样，一点一点的往上浮。

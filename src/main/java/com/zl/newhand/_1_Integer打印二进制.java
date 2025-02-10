@@ -5,7 +5,7 @@ package com.zl.newhand;
  * @Date : Create in 2023/4/7 12:33
  * @Description : 二进制打印算法(13 = 00000000 00000000 00000000 00001101)
  */
-public class Integer打印二进制 {
+public class _1_Integer打印二进制 {
 
     public static String getIntegerBinary(int num) {
         StringBuilder sb = new StringBuilder();

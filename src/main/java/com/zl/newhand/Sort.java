@@ -8,15 +8,6 @@ package com.zl.newhand;
 public class Sort {
 
     /**
-     * 数组中i位置和j位置数据进行交换
-     */
-    private static void swap(int[] arr, int i, int j) {
-        int tmp = arr[i];
-        arr[i] = arr[j];
-        arr[j] = tmp;
-    }
-
-    /**
      * 打印数组
      */
     private static void printArr(int[] arr) {

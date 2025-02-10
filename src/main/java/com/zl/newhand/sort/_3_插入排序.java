@@ -7,7 +7,7 @@ import java.util.Arrays;
  * @Date 2025/2/10 16:40
  * @Description
  */
-public class 插入排序 {
+public class _3_插入排序 {
 
     /**
      * 思路: (前缀依次有序)
