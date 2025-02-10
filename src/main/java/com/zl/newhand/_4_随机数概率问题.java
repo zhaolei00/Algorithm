@@ -23,16 +23,6 @@ public class _4_随机数概率问题 {
         return equalProbability1() * n;
     }
 
-    // [0, 1) 中，返回[0,x)的概率是x，现在要求是返回[0,x)的概率是x^2
-    private static double equalProbability3() {
-        return Math.max(equalProbability1(), equalProbability1());
-    }
-
-    // [0, 1) 中，返回[0,x)的概率是x，现在要求是返回[0,x)的概率是 1-(1-x)^2
-    private static double equalProbability4() {
-        return Math.min(equalProbability1(), equalProbability1());
-    }
-
     // 等概率返回[0,N] 中的一个整数
     private static int equalProbability5(int N) {
         // 考虑边界
@@ -42,7 +32,18 @@ public class _4_随机数概率问题 {
         // 等概率 [0,1)
         // *N+1 等概率[0,N+1)
         // 取整 [0,N]
+        // TODO 需要考虑超出int最大值
         return (int) (equalProbability1() * (N + 1));
+    }
+
+    // [0, 1) 中，返回[0,x)的概率是x，现在要求是返回[0,x)的概率是x^2
+    private static double equalProbability3() {
+        return Math.max(equalProbability1(), equalProbability1());
+    }
+
+    // [0, 1) 中，返回[0,x)的概率是x，现在要求是返回[0,x)的概率是 1-(1-x)^2
+    private static double equalProbability4() {
+        return Math.min(equalProbability1(), equalProbability1());
     }
 
     public static void main(String[] args) {
@@ -93,7 +94,7 @@ public class _4_随机数概率问题 {
             return tn(c, d) + c;
         }
 
-        // 根据fn函数，构建等概率返回[0,1] 函数
+        // 根据fn函数，构建等概率返回[0,1] 函数。 0、1发生器。
         public static int hn() {
             // 考虑边界
             if (a < 0 || a > b || b == 0) {
@@ -160,6 +161,7 @@ public class _4_随机数概率问题 {
             return equalProbability1() < a ? 0 : 1;
         }
 
+        // 根据fn() 不等概率返回0和1，返回等概率返回0和1。
         private static int gn() {
             // P * 1-P 是相等的
             int res;
@@ -168,7 +170,7 @@ public class _4_随机数概率问题 {
                 res |= fn();
                 res |= fn() << 1;
             } while (res != 1 && res != 2);
-            return res == 1 ? 0 : 1;
+            return res;
         }
 
         private static int gn1() {
