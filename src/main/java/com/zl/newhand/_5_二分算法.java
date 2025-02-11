@@ -5,11 +5,8 @@ import com.zl.newhand.sort._2_选择排序;
 import java.util.Arrays;
 
 /**
- * @Author : zhaolei
- * @Date : Create in 2023/4/8 15:01
- * @Description :
- *      二分法相关算法
- *          什么情况下可以使用二分: 根据目标，如果二分之后，某一侧一定会有这个结果就可以二分。
+ *  二分法相关算法
+ *      什么情况下可以使用二分: 根据目标，如果二分之后，某一侧一定会有这个结果就可以二分。
  */
 public class _5_二分算法 {
 
