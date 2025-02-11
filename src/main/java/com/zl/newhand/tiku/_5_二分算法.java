@@ -1,4 +1,4 @@
-package com.zl.newhand;
+package com.zl.newhand.tiku;
 
 import com.zl.newhand.sort._2_选择排序;
 

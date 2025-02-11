@@ -1,4 +1,4 @@
-package com.zl.newhand;
+package com.zl.newhand.tiku;
 
 /**
  * @Description : 二进制打印算法(13 = 00000000 00000000 00000000 00001101)

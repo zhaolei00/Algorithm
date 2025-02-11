@@ -1,4 +1,4 @@
-package com.zl.newhand;
+package com.zl.newhand.tiku;
 
 /**
  * @Description : 给出一个N数(大于0)，计算 1! + 2! + 3! + N! 的结果

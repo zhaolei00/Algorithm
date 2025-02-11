@@ -1,4 +1,6 @@
-package com.zl.newhand;
+package com.zl.newhand.tiku;
+
+import com.zl.newhand.tiku._4_随机数概率问题;
 
 /**
  * @Author : zhaolei
