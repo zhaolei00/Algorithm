@@ -1,6 +1,6 @@
 package com.zl.newhand.tiku;
 
-import com.zl.newhand.tiku._4_随机数概率问题;
+import com.zl.newhand.linkedlist.Node;
 
 /**
  * @Author : zhaolei
@@ -17,7 +17,13 @@ public class _99_对数器 {
 
     // TODO 需要补充各种工具。例如: 生成随机长度和随机大小的数组。等等。
     public static void main(String[] args) {
-        System.out.println();
+        int times = 10;
+        int maxLength = 10;
+        int maxValue = 100;
+        for (int i = 0; i < times; i++) {
+            Node head = randomGenLinkedList(maxLength, maxValue);
+            printLinkedList(head);
+        }
     }
 
     public static int[] randomGenIntArray(int maxLength, int maxValue) {
@@ -45,6 +51,40 @@ public class _99_对数器 {
             }
         }
         return arr;
+    }
+
+    /**
+     * 随机生成单链表数组
+     */
+    public static Node randomGenLinkedList(int maxLength, int maxValue) {
+        int length = _4_随机数概率问题.equalProbability5(maxLength - 1) + 1;
+        Node head = null;
+        Node tail = null;
+        for (int i = 0; i < length; i++) {
+            Node temp = new Node(_4_随机数概率问题.equalProbability5(maxValue), null);
+            if (head == null) {
+                head = temp;
+                tail = temp;
+                continue;
+            }
+            tail.setNext(temp);
+            tail = temp;
+        }
+        return head;
+    }
+
+    /**
+     * 打印单链表
+     */
+    public static void printLinkedList(Node head) {
+        if (head == null) {
+            return;
+        }
+        while (head != null) {
+            System.out.print(head.getV() + "->");
+            head = head.getNext();
+        }
+        System.out.println();
     }
 
 }
