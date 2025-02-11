@@ -7,12 +7,12 @@ package com.zl.newhand;
 public class _4_随机数概率问题 {
 
     // 等概率返回[0,1)区间的小数
-    private static double equalProbability1() {
+    public static double equalProbability1() {
         return Math.random();
     }
 
     // 等概率返回[0,N)区间的小数
-    private static double equalProbability2(int n) {
+    public static double equalProbability2(int n) {
         // 考虑边界
         if (n < 0) {
             throw new IllegalArgumentException();
@@ -24,7 +24,7 @@ public class _4_随机数概率问题 {
     }
 
     // 等概率返回[0,N] 中的一个整数
-    private static int equalProbability5(int N) {
+    public static int equalProbability5(int N) {
         // 考虑边界
         if (N < 0) {
             throw new IllegalArgumentException();

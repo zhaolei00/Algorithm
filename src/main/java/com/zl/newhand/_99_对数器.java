@@ -18,4 +18,31 @@ public class _99_对数器 {
         System.out.println();
     }
 
+    public static int[] randomGenIntArray(int maxLength, int maxValue) {
+        if (_4_随机数概率问题.equalProbability1() <= 0.1) {
+            return null;
+        }
+        int[] arr = new int[_4_随机数概率问题.equalProbability5(maxLength)];
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = _4_随机数概率问题.equalProbability5(maxValue);
+        }
+        return arr;
+    }
+
+    public static int[] randomGenNotEqualArray(int maxLength, int maxValue) {
+        if (_4_随机数概率问题.equalProbability1() <= 0.1) {
+            return null;
+        }
+        int[] arr = new int[_4_随机数概率问题.equalProbability5(maxLength)];
+        if (arr.length > 0) {
+            arr[0] = _4_随机数概率问题.equalProbability5(maxValue);
+            for (int i = 1; i < arr.length; i++) {
+                do {
+                    arr[i] = _4_随机数概率问题.equalProbability5(maxValue);
+                } while (arr[i] == arr[i - 1]);
+            }
+        }
+        return arr;
+    }
+
 }
