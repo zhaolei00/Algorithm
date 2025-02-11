@@ -2,7 +2,9 @@ package com.zl.newhand;
 
 import com.zl.newhand.sort._2_选择排序;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  *  二分法相关算法
@@ -245,13 +247,38 @@ public class _5_二分算法 {
         return arr[target] < arr[target - 1] && arr[target] < arr[target + 1];
     }
 
+    //===============【题目】给定arr数组(无序，相邻两个位置不等), 找到所有局部最小位置=====================
+    public static List<Integer> question5(int[] arr) {
+        if (arr == null || arr.length < 2) {
+            return null;
+        }
+        int n = arr.length;
+        List<Integer> ans = new ArrayList<>();
+        if (arr[0] < arr[1]) {
+            ans.add(arr[0]);
+        }
+        if (arr[n - 1] < arr[n - 2]) {
+            ans.add(arr[n - 1]);
+        }
+        int L = 1;
+        int R = n - 2;
+        while (L <= R) {
+            int mid = (L + R) / 2;
+            if (arr[mid] < arr[mid - 1] && arr[mid] < arr[mid + 1]) {
+                ans.add(mid);
+            }
+            if (arr[mid] > arr[mid - 1]) {
+
+            }
+        }
+        return ans;
+    }
+
     public static void main(String[] args) {
         testQuestion1();
         testQuestion2();
         testQuestion3();
         testQuestion4();
     }
-
-    //===============【题目】给定arr数组(无序，相邻两个位置不等), 找到所有局部最小位置=====================
 
 }
