@@ -20,7 +20,7 @@ public class 链表相加 {
         int length1 = length(head1);
         int length2 = length(head2);
         Node<Integer> lengthMinHead = length1 <= length2 ? head1 : head2;
-        Node<Integer> lengthMaxHead = length1 > length2 ? head1 : head2;
+        Node<Integer> lengthMaxHead = lengthMinHead == head1 ? head2 : head1;
         // 以短的为主，开始遍历进行相加。短的遍历完成后，链上长的剩余的。
         int carry = 0;
         Node<Integer> ans = lengthMaxHead;
