@@ -7,6 +7,7 @@ import com.zl.newhand.linkedlist.interfaces.Queue;
  * @Date : Create in 2023/4/8 23:37
  * @Description : 单链表实现队列(FIFO, 尾差法)
  */
+@Deprecated
 public class QueueBySingleLinked<T> implements Queue<T> {
 
     public static void main(String[] args) {

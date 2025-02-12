@@ -7,6 +7,7 @@ import com.zl.newhand.linkedlist.interfaces.Stack;
  * @Date : Create in 2023/4/8 23:37
  * @Description : 单链表实现栈(FILO 头插法)
  */
+@Deprecated
 public class StackBySingleLinked<V> implements Stack<V> {
 
     public static void main(String[] args) {

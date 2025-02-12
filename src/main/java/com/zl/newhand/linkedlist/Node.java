@@ -3,26 +3,28 @@ package com.zl.newhand.linkedlist;
 import lombok.Data;
 
 /**
- * @Author zl
- * @Date 2025/2/11 21:09
- * @Description
+ * 节点
  */
 @Data
-public class Node {
+public class Node<V> {
 
     // 值
-    private int v;
+    private V v;
 
     // 前继节点
-    private Node pre;
+    private Node<V> pre;
 
     // 后继节点
-    private Node next;
+    private Node<V> next;
 
     public Node() {
     }
 
-    public Node(int v, Node next) {
+    public Node(V v) {
+        this.v = v;
+    }
+
+    public Node(V v, Node<V> next) {
         this.v = v;
         this.next = next;
     }
