@@ -22,7 +22,7 @@ public class _99_对数器 {
         int maxValue = 100;
         for (int i = 0; i < times; i++) {
             Node head = randomGenLinkedList(maxLength, maxValue);
-            printLinkedList(head);
+            printSingleLinked(head);
         }
     }
 
@@ -54,7 +54,7 @@ public class _99_对数器 {
     }
 
     /**
-     * 随机生成单链表数组
+     * 随机生成单向链表
      */
     public static Node randomGenLinkedList(int maxLength, int maxValue) {
         int length = _4_随机数概率问题.equalProbability5(maxLength - 1) + 1;
@@ -74,15 +74,39 @@ public class _99_对数器 {
     }
 
     /**
-     * 打印单链表
+     * 随机生成双向链表
      */
-    public static void printLinkedList(Node head) {
+    public static Node randomGenDoubleLinkedList(int maxLength, int maxValue) {
+        int length = _4_随机数概率问题.equalProbability5(maxLength - 1) + 1;
+        Node head = null;
+        Node tail = null;
+        for (int i = 0; i < length; i++) {
+            Node temp = new Node(_4_随机数概率问题.equalProbability5(maxValue), null);
+            if (head == null) {
+                head = temp;
+                tail = temp;
+                continue;
+            }
+            tail.setNext(temp);
+            temp.setPre(tail);
+            tail = temp;
+        }
+        return head;
+    }
+
+    /**
+     * 打印单向链表
+     */
+    public static void printSingleLinked(Node head) {
         if (head == null) {
             return;
         }
         while (head != null) {
-            System.out.print(head.getV() + "->");
+            System.out.print(head.getV());
             head = head.getNext();
+            if (head != null) {
+                System.out.print("->");
+            }
         }
         System.out.println();
     }

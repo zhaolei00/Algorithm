@@ -7,25 +7,6 @@ import lombok.Data;
  */
 public class ReverseLinkedList {
 
-    //===============【题目】给定双向链表Head, 进行反转=====================
-    private static class ReverseDoubleLinkedList {
-        public ListNode reverse(ListNode head) {
-            ListNode pre = null;
-            ListNode next = null;
-            while (head != null) {
-                // head 记录要反转的节点
-                // pre 记录要反转的前一个节点
-                // next 记录要反转的后一个节点
-                next = head.next;
-                head.next = pre;
-                head.pre = next;
-                pre = head;
-                head = next;
-            }
-            return pre;
-        }
-    }
-
     //===============【题目】给定单向链表Head, 删除所有值为t的节点，返回头节点=====================
     private static ListNode deleteNodeByValue(ListNode head, int val) {
         if (head == null) {
