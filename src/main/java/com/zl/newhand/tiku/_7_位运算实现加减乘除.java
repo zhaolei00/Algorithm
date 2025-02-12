@@ -1,31 +1,8 @@
-package com.zl.newhand;
+package com.zl.newhand.tiku;
 
 /**
- * @Author : zhaolei
- * @Date : Create in 2023/4/9 11:33
- * @Description :
- * 位图:
- * 功能: 用一组bit来表示一个可确定的范围，进行范围内的统计。
  */
-public class BitMap {
-
-    private long[] bits;
-
-    public BitMap(int max) {
-        bits = new long[(max + 64) >> 6];
-    }
-
-    public void add(int num) {
-        bits[num >> 6] |= (1L << (num & 63));
-    }
-
-    public void delete(int num) {
-        bits[num >> 6] &= ~(1L << (num & 63));
-    }
-
-    public boolean contains(int num) {
-        return (bits[num >> 6] & (1L << (num & 63))) != 0;
-    }
+public class _7_位运算实现加减乘除 {
 
     //===============【题目】位运算实现加减乘除 =====================
     // 注意: 单纯位运算是比加减乘除要快，但是用位运算实现加减乘除要比原生Java的加减乘除要慢。
@@ -42,10 +19,5 @@ public class BitMap {
     //                          如果b非-1，a/b 过程 (a+1)/b=c, a-b*c=d, d/b=e, 结果就为c+e。
     //             a 不为系统最小, b 为系统最小 等于0
     //             a,b 都不为系统最小 正常算
-    public static void main(String[] args) {
-        System.out.println(Integer.MIN_VALUE);
-        System.out.println(Integer.MAX_VALUE);
-        System.out.println(Integer.MIN_VALUE / -1);
-    }
 
 }
