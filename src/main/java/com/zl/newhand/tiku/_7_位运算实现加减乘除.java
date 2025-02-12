@@ -4,8 +4,8 @@ package com.zl.newhand.tiku;
  */
 public class _7_位运算实现加减乘除 {
 
-    // Java语言的加减乘除和自己用位运算实现的加减乘除相比，Java语言的快。
-    // 但是位运算，一定比Java语言的加减乘除要快。 为什么呢? 下面实现的思路，就是计算机的实现思路。
+    // 注意: 单纯位运算是比加减乘除要快，但是用位运算实现加减乘除要比原生Java的加减乘除要慢。
+    // 但是位运算，一定比Java语言的加减乘除要快。 为什么呢? 下面实现的思路，就是计算机的实现思路。因为底层实现复杂度会相对高，所以位运算快。
 
     // 加法
     // 思路: a+b = a` + b` = a`` + b `` = 无进位相加 + 进位信息 不断计算，当进位信息为0时，无进位相加的结果就是相加的结果。
@@ -25,6 +25,8 @@ public class _7_位运算实现加减乘除 {
         return add(a, add(~b, 1));
     }
 
+    // 乘法
+    // 思路: 和正常乘法运算一样，每位乘的结果相加。
     public static int multi(int a, int b) {
         int ans = 0;
         for (int i = 0; i < 32; i++) {
@@ -34,6 +36,10 @@ public class _7_位运算实现加减乘除 {
             }
         }
         return ans;
+    }
+
+    public static int div(int a, int b) {
+        return 0;
     }
 
     public static void main(String[] args) {
