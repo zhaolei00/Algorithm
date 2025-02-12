@@ -3,6 +3,7 @@ package com.zl.newhand.tiku;
 /**
  * 位图:
  * 功能: 用一组bit来表示一个可确定的范围内的数(0~M)，是否存在。
+ * 如果是 -M ~ N 用 (0～N+M)范围来表示，在0～M-1映射成(-M~-1)。
  */
 public class _6_位图 {
 
