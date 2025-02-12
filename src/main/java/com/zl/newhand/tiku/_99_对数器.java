@@ -2,6 +2,11 @@ package com.zl.newhand.tiku;
 
 import com.zl.newhand.linkedlist.Node;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
+
 /**
  * @Author : zhaolei
  * @Date : Create in 2023/4/8 14:42
@@ -69,6 +74,30 @@ public class _99_对数器 {
             }
             tail.setNext(temp);
             tail = temp;
+        }
+        return head;
+    }
+
+    /**
+     * 随机生成有序单向链表
+     */
+    public static Node<Integer> randomGenSortLinkedList(int maxLength, int maxValue) {
+        int length = _4_随机数概率问题.equalProbability5(maxLength - 1) + 1;
+        Node<Integer> head = null;
+        Node<Integer> tail = null;
+        List<Integer> list = new ArrayList<>();
+        for (int i = 0; i < length; i++) {
+            list.add(_4_随机数概率问题.equalProbability5(maxValue));
+        }
+        Collections.sort(list);
+        for (Integer value : list) {
+            if (head == null) {
+                head = tail = new Node<>(value);
+            } else {
+                Node<Integer> temp = new Node<>(value);
+                tail.setNext(temp);
+                tail = temp;
+            }
         }
         return head;
     }
