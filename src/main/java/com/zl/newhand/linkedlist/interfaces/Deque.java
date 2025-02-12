@@ -1,9 +1,7 @@
 package com.zl.newhand.linkedlist.interfaces;
 
 /**
- * @Author : zhaolei
- * @Date : Create in 2023/4/9 00:53
- * @Description : 双向队列
+ * 双端队列
  */
 public interface Deque<V> {
 

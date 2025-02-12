@@ -1,9 +1,7 @@
 package com.zl.newhand.linkedlist.interfaces;
 
 /**
- * @Author : zhaolei
- * @Date : Create in 2023/4/8 23:38
- * @Description : 队列 FIFO
+ * 队列 FIFO
  */
 public interface Queue<T> {
 

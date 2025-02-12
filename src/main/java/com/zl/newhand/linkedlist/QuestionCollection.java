@@ -27,8 +27,8 @@ public class QuestionCollection {
     //===============【题目1】设计一个特殊栈，获取栈中最小值时时间复杂度为o(1)=====================
     private static class MinStack {
 
-        private StackBySingleLinked<Integer> dataStack;
-        private StackBySingleLinked<Integer> mixStack;
+        private 单链表实现栈.MyStack<Integer> dataStack;
+        private 单链表实现栈.MyStack<Integer> mixStack;
 
         public void push(Integer val) {
             dataStack.push(val);
@@ -58,8 +58,8 @@ public class QuestionCollection {
     // 思路: 两个栈 push栈 pop栈
     private static class QueueByStack implements Queue<Integer> {
 
-        private final Stack<Integer> pushStack = new StackBySingleLinked<>();
-        private final Stack<Integer> popStack = new StackBySingleLinked<>();
+        private final Stack<Integer> pushStack = new 单链表实现栈.MyStack<>();
+        private final Stack<Integer> popStack = new 单链表实现栈.MyStack<>();
         ;
 
         @Override
@@ -104,8 +104,8 @@ public class QuestionCollection {
     // 思路: 两个队列 data队列 help队列 在取数据时，help队列用于数据转化，data和help交换
     private static class StackByQueue implements Stack<Integer> {
 
-        private Queue<Integer> dataQueue = new QueueBySingleLinked<>();
-        private Queue<Integer> helpQueue = new QueueBySingleLinked<>();
+        private Queue<Integer> dataQueue = new 链表实现队列.MyQueue<>();
+        private Queue<Integer> helpQueue = new 链表实现队列.MyQueue<>();
 
         @Override
         public boolean isEmpty() {
@@ -153,10 +153,6 @@ public class QuestionCollection {
             return value;
         }
     }
-
-    // 两个有序链表合并，给定两个有序链表的头节点 head1和head2
-    // 返回合并之后的大链表，依然有序。
-    // 思路: head1和head2进行比较，谁小返回谁。定义cur1和cur2和pre，cur1和cur2谁小pre.next连接谁
 
     //===============【题目】=====================
     //给你一个链表数组，每个链表都已经按升序排列。请你将所有链表合并到一个升序链表中，返回合并后的链表。
