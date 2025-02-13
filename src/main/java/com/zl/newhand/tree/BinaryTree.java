@@ -23,30 +23,6 @@ public class BinaryTree {
         }
     }
 
-    //===============【题目】判断一棵树是否是镜面树(对称树)=====================
-    private static boolean isSymmetricTree(TreeNode root) {
-        if (root == null) {
-            return true;
-        }
-        if (root.left == null ^ root.right == null) {
-            return false;
-        }
-        if (root.left == null && root.right == null) {
-            return true;
-        }
-        return isMirror(root.left, root.right);
-    }
-
-    private static boolean isMirror(TreeNode head1, TreeNode head2) {
-        if (head1 == null ^ head2 == null) {
-            return false;
-        }
-        if (head1 == null && head2 == null) { // 为什么IDEA高亮? 此处只能是head1和head2都为空，或者都不为空。所以head2 == null是废话。
-            return true;
-        }
-        return head1.val == head2.val && isMirror(head1.left, head2.right) && isMirror(head1.right, head2.left);
-    }
-
     //===============【题目】返回一棵树的最大深度=====================
     private static int maxDepth(TreeNode root) {
         if (root == null) {
