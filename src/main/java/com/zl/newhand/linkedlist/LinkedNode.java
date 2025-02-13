@@ -3,7 +3,7 @@ package com.zl.newhand.linkedlist;
 import lombok.Data;
 
 /**
- * 节点
+ * 链表节点
  */
 @Data
 public class LinkedNode<V> {
