@@ -1,5 +1,8 @@
 package com.zl.newhand.tree;
 
+import java.util.ArrayDeque;
+import java.util.Deque;
+
 /**
  */
 public class 树的遍历 {
@@ -32,4 +35,22 @@ public class 树的遍历 {
         System.out.println(root.value);
     }
 
+    // 层序遍历 依次放入到双端队列，从前取，从后放。
+    public static void ceng(TreeNode<Integer> root) {
+        if (root == null) {
+            return;
+        }
+        Deque<TreeNode<Integer>> deque = new ArrayDeque<>();
+        deque.addLast(root);
+        while (!deque.isEmpty()) {
+            TreeNode<Integer> treeNode = deque.getFirst();
+            System.out.println(treeNode.value);
+            if (treeNode.left != null) {
+                deque.addLast(treeNode.left);
+            }
+            if (treeNode.right != null) {
+                deque.addLast(treeNode.right);
+            }
+        }
+    }
 }
