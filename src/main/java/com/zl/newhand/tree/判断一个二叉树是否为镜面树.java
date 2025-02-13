@@ -2,7 +2,7 @@ package com.zl.newhand.tree;
 
 /**
  */
-public class 判断一个树是否为镜面树 {
+public class 判断一个二叉树是否为镜面树 {
 
     //===============【题目】判断一棵树是否是镜面树(对称树)=====================
     public static boolean isMirrorTree(TreeNode<Integer> root) {
