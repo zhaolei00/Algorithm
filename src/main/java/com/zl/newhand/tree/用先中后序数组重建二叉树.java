@@ -29,10 +29,10 @@ public class 用先中后序数组重建二叉树 {
         }
         TreeNode<Integer> root = new TreeNode<>(xianArr[L1]);
         // 从中序中找到L1相等的数。每次都遍历复杂度比较高。用Map存储。
-        int index = L2;
-        while (zhongArr[index] != xianArr[L1]) {
-            index++;
-        }
+        int index = map.get(xianArr[L1]);
+        // while (zhongArr[index] != xianArr[L1]) {
+        //     index++;
+        // }
         int leftNum = index - L2;
         TreeNode<Integer> left = f(xianArr, L1 + 1, L1 + leftNum, zhongArr, L2, index - 1, map);
         TreeNode<Integer> right = f(xianArr, L1 + leftNum + 1, R1, zhongArr, index + 1, R2, map);
