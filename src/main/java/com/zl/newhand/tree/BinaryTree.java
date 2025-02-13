@@ -13,49 +13,6 @@ import java.util.HashMap;
  */
 public class BinaryTree {
 
-    private static class TreeNode {
-        private final int val;
-        private TreeNode left;
-        private TreeNode right;
-
-        public TreeNode(int x) {
-            this.val = x;
-        }
-    }
-
-    //===============【题目】用先序数组和中序数组重建一棵树 条件:先序数组和中序数组没有重复值=====================
-    private static TreeNode buildTree(int[] preorder, int[] inorder) {
-        if (preorder == null || inorder == null || preorder.length != inorder.length) {
-            return null;
-        }
-        // 记录位置，空间换时间。不然每次找先序数组中的节点在中序数组中的位置时，都需要遍历。
-        HashMap<Integer, Integer> valueIndexMap = new HashMap<>();
-        for (int i = 0; i < inorder.length; i++) {
-            valueIndexMap.put(inorder[i], i);
-        }
-        return getRootNode(preorder,  0, preorder.length - 1, inorder, 0, inorder.length - 1, valueIndexMap);
-    }
-
-    // 方法含义: 根据先序数组(l1,r1)和中序数组(l2,r2)重建一棵树
-    // 思路: 先序树数组l1位置的数k一定是根节点，根据k找到中序数组的位置index, l2到index-1属于左子树的，index+1到r2属于右子树的，重复递归。
-    //      最后生成root节点和连接上左右子树
-    private static TreeNode getRootNode(int[] pre, int l1, int r1, int[] in, int l2, int r2, HashMap<Integer, Integer> valueIndexMap) {
-        if (l1 > r1) {
-            return null;
-        }
-        TreeNode root = new TreeNode(pre[l1]);
-        if (l1 == r1) {
-            return root;
-        }
-        int find = valueIndexMap.get(pre[l1]);
-        // 个数 find - l2
-        // 获取左树节点
-        root.left = getRootNode(pre, l1 + 1, l1 + find - l2, in, l2, find - 1, valueIndexMap);
-        // 获取右树节点
-        root.right = getRootNode(pre, l1 + find - l2 + 1, r1, in, find + 1, r2, valueIndexMap);
-        return root;
-    }
-
     //===============【题目】二叉树按层遍历并收集节点 II=====================
     //https://leetcode.cn/problems/binary-tree-level-order-traversal-ii/
 
