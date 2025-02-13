@@ -7,11 +7,15 @@ package com.zl.newhand.tiku;
  */
 public class _6_位图 {
 
-    // TODO 申请long数组长度 和 计算第几个long的位置需要仔细研究下。未深度理解。
     private long[] bits;
 
     public _6_位图(int max) {
-        bits = new long[(max + 64) >> 6];
+        bits = new long[(max >> 6) + 1];
+    }
+
+    // -M ~ N 。整体偏移M个位置
+    public _6_位图(int mix, int max) {
+        this((~mix + 1) + max);
     }
 
     public void add(int num) {
