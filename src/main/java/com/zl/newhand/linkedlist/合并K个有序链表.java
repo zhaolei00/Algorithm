@@ -26,9 +26,12 @@ public class 合并K个有序链表 {
             }
             mixHeap.add(node);
         }
+        if (mixHeap.isEmpty()) {
+            return null;
+        }
         LinkedNode<Integer> ans = mixHeap.poll();
         LinkedNode<Integer> pre = ans;
-        if (ans != null && ans.getNext() != null) {
+        if (ans.getNext() != null) {
             mixHeap.add(ans.getNext());
         }
         while (mixHeap.peek() != null) {
