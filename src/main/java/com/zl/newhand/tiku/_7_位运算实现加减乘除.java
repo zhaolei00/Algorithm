@@ -38,28 +38,42 @@ public class _7_位运算实现加减乘除 {
         return ans;
     }
 
-    public static int div(int a, int b) {
-        return 0;
+    // 除法
+    // 思路: 需要考虑系统最小值。被除数缩小多少倍 大于 除数，1再扩大多少倍，就是一部分商。可以用10进位类比，原理是一样的。
+    private static int div(int a, int b) {
+        // 处理系统最小值，因为系统最小值绝对值还是系统最小
+        if (a == Integer.MIN_VALUE && b == Integer.MIN_VALUE) {
+            return 1;
+        }
+        if (b == Integer.MIN_VALUE) {
+            return 0;
+        }
+        if (a == Integer.MIN_VALUE) {
+            if (b == -1) {
+                return Integer.MAX_VALUE;
+            }
+            int c = doDiv(add(a, 1), b);
+            return c + doDiv(minus(a, multi(c, b)), b);
+        }
+        return doDiv(a, b);
+    }
+
+    private static int doDiv(int a, int b) {
+        int a1 = a < 0 ? ~a + 1 : a;
+        int b1 = b < 0 ? ~b + 1 : b;
+        int ans = 0;
+        for (int i = 30; i >= 0; i--) {
+            int temp = a1 >> i;
+            if (temp >= b1) {
+                ans |= 1 << i;
+                a1 = minus(a1, b1 << i);
+            }
+        }
+        return a < 0 != b < 0 ? ~ans + 1: ans;
     }
 
     public static void main(String[] args) {
-        System.out.println(multi(1000, -11));
+        System.out.println(div(7, -3));
     }
-
-    //===============【题目】位运算实现加减乘除 =====================
-    // 注意: 单纯位运算是比加减乘除要快，但是用位运算实现加减乘除要比原生Java的加减乘除要慢。
-    // 异或是无进位相加    进位信息是 (a&b)<<1
-    // 加法实现思路: a+b = a` + b` = a`` + b `` = 无进位相加 + 进位信息 不断计算，当进位信息为0时，无进位相加的结果就是相加的结果。
-    // 减法时间思路: a-b = a+(-b) = add(a,add(~b,1))。 原理是 -N=~N+1
-    // 乘法实现思路: a*b = a右面补 每个b的非0位位置个0后相加。
-    // 除法实现思路: 输入a,b取绝对值,a,b都为非负数,a/b=c, 最终结果c=c'+c''+c'''+... ,c'都是2^n。
-    //             也就是说，a不断从大到小右移，找到大于等于b就是得到c'，但是这个c'是需要扩大移动的位数的，a减去b的c'，剩下的数继续算是否有大于等于b的。
-    //             考虑 a,b为系统最小
-    //             a,b 都为系统最小 等于1
-    //             a 为系统最小, b 不为系统最小。
-    //                          如果b为-1,结果为系统最大+1，但是没法表示，硬性规定结果为系统最大。
-    //                          如果b非-1，a/b 过程 (a+1)/b=c, a-b*c=d, d/b=e, 结果就为c+e。
-    //             a 不为系统最小, b 为系统最小 等于0
-    //             a,b 都不为系统最小 正常算
 
 }
