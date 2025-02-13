@@ -1,22 +1,18 @@
 package com.zl.newhand.tiku;
 
-import com.zl.newhand.linkedlist.Node;
+import com.zl.newhand.linkedlist.LinkedNode;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
- * @Author : zhaolei
- * @Date : Create in 2023/4/8 14:42
- * @Description :
- *      对数器(正确的比较)
- *          作用:
- *              1. 生成随机样本。
- *              2. 肯定正确的解决流程，不考虑复杂度。
- *              3. 自己写的算法，是否正确，通过随机样本，比较2和3的结果。如果结果有差异，则算法有问题。
- *                 根据有问题的case，进行调试，找问题更快。
+ * 对数器(正确的比较)
+ *     作用:
+ *         1. 生成随机样本。
+ *         2. 肯定正确的解决流程，不考虑复杂度。
+ *         3. 自己写的算法，是否正确，通过随机样本，比较2和3的结果。如果结果有差异，则算法有问题。
+ *            根据有问题的case，进行调试，找问题更快。
  */
 public class _99_对数器 {
 
@@ -26,7 +22,7 @@ public class _99_对数器 {
         int maxLength = 10;
         int maxValue = 100;
         for (int i = 0; i < times; i++) {
-            Node head = randomGenLinkedList(maxLength, maxValue);
+            LinkedNode head = randomGenLinkedList(maxLength, maxValue);
             printSingleLinked(head);
         }
     }
@@ -61,12 +57,12 @@ public class _99_对数器 {
     /**
      * 随机生成单向链表
      */
-    public static Node randomGenLinkedList(int maxLength, int maxValue) {
+    public static LinkedNode randomGenLinkedList(int maxLength, int maxValue) {
         int length = _4_随机数概率问题.equalProbability5(maxLength - 1) + 1;
-        Node head = null;
-        Node tail = null;
+        LinkedNode head = null;
+        LinkedNode tail = null;
         for (int i = 0; i < length; i++) {
-            Node temp = new Node(_4_随机数概率问题.equalProbability5(maxValue), null);
+            LinkedNode temp = new LinkedNode(_4_随机数概率问题.equalProbability5(maxValue), null);
             if (head == null) {
                 head = temp;
                 tail = temp;
@@ -81,10 +77,10 @@ public class _99_对数器 {
     /**
      * 随机生成有序单向链表
      */
-    public static Node<Integer> randomGenSortLinkedList(int maxLength, int maxValue) {
+    public static LinkedNode<Integer> randomGenSortLinkedList(int maxLength, int maxValue) {
         int length = _4_随机数概率问题.equalProbability5(maxLength - 1) + 1;
-        Node<Integer> head = null;
-        Node<Integer> tail = null;
+        LinkedNode<Integer> head = null;
+        LinkedNode<Integer> tail = null;
         List<Integer> list = new ArrayList<>();
         for (int i = 0; i < length; i++) {
             list.add(_4_随机数概率问题.equalProbability5(maxValue));
@@ -92,9 +88,9 @@ public class _99_对数器 {
         Collections.sort(list);
         for (Integer value : list) {
             if (head == null) {
-                head = tail = new Node<>(value);
+                head = tail = new LinkedNode<>(value);
             } else {
-                Node<Integer> temp = new Node<>(value);
+                LinkedNode<Integer> temp = new LinkedNode<>(value);
                 tail.setNext(temp);
                 tail = temp;
             }
@@ -105,12 +101,12 @@ public class _99_对数器 {
     /**
      * 随机生成双向链表
      */
-    public static Node randomGenDoubleLinkedList(int maxLength, int maxValue) {
+    public static LinkedNode randomGenDoubleLinkedList(int maxLength, int maxValue) {
         int length = _4_随机数概率问题.equalProbability5(maxLength - 1) + 1;
-        Node head = null;
-        Node tail = null;
+        LinkedNode head = null;
+        LinkedNode tail = null;
         for (int i = 0; i < length; i++) {
-            Node temp = new Node(_4_随机数概率问题.equalProbability5(maxValue), null);
+            LinkedNode temp = new LinkedNode(_4_随机数概率问题.equalProbability5(maxValue), null);
             if (head == null) {
                 head = temp;
                 tail = temp;
@@ -126,7 +122,7 @@ public class _99_对数器 {
     /**
      * 打印单向链表
      */
-    public static void printSingleLinked(Node head) {
+    public static void printSingleLinked(LinkedNode head) {
         if (head == null) {
             return;
         }

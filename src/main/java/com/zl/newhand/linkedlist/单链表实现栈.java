@@ -11,7 +11,7 @@ public class 单链表实现栈 {
     // 功能: 入栈、出栈
     public static class MyStack<V> implements Stack<V> {
 
-        private Node<V> head;
+        private LinkedNode<V> head;
 
         private int size;
 
@@ -27,7 +27,7 @@ public class 单链表实现栈 {
 
         @Override
         public void push(V v) {
-            Node<V> cur = new Node<>(v);
+            LinkedNode<V> cur = new LinkedNode<>(v);
             cur.setNext(head);
             head = cur;
             size++;

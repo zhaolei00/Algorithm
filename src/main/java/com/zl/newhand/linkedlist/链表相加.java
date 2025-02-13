@@ -13,18 +13,18 @@ public class 链表相加 {
     // 解释: 642 + 483 = 1125
     // 思路: 前提: 分为长短链表，长:l 短:s 分为三个阶段: l有s有，l有s没有，l没有s没有
 
-    public static Node<Integer> linkedAddSum(Node<Integer> head1, Node<Integer> head2) {
+    public static LinkedNode<Integer> linkedAddSum(LinkedNode<Integer> head1, LinkedNode<Integer> head2) {
         if (head1 == null || head2 == null) {
             return head1 == null ? head2 : head1;
         }
         int length1 = length(head1);
         int length2 = length(head2);
-        Node<Integer> lengthMinHead = length1 <= length2 ? head1 : head2;
-        Node<Integer> lengthMaxHead = lengthMinHead == head1 ? head2 : head1;
+        LinkedNode<Integer> lengthMinHead = length1 <= length2 ? head1 : head2;
+        LinkedNode<Integer> lengthMaxHead = lengthMinHead == head1 ? head2 : head1;
         // 以短的为主，开始遍历进行相加。短的遍历完成后，链上长的剩余的。
         int carry = 0;
-        Node<Integer> ans = lengthMaxHead;
-        Node<Integer> pre = null;
+        LinkedNode<Integer> ans = lengthMaxHead;
+        LinkedNode<Integer> pre = null;
         while (lengthMaxHead != null) {
             pre = lengthMaxHead;
             if (lengthMinHead != null) {
@@ -45,12 +45,12 @@ public class 链表相加 {
         }
         // 所有节点都处理完，还有进位，新建个节点
         if (carry > 0) {
-            pre.setNext(new Node<>(carry));
+            pre.setNext(new LinkedNode<>(carry));
         }
         return ans;
     }
 
-    public static int length(Node<Integer> head) {
+    public static int length(LinkedNode<Integer> head) {
         if (head == null) {
             return 0;
         }
@@ -67,11 +67,11 @@ public class 链表相加 {
         int maxLength = 5;
         int maxValue = 9;
         for (int i = 0; i < times; i++) {
-            Node node1 = _99_对数器.randomGenLinkedList(maxLength, maxValue);
-            _99_对数器.printSingleLinked(node1);
-            Node node2 = _99_对数器.randomGenLinkedList(maxLength, maxValue);
-            _99_对数器.printSingleLinked(node2);
-            Node sum = linkedAddSum(node1, node2);
+            LinkedNode linkedNode1 = _99_对数器.randomGenLinkedList(maxLength, maxValue);
+            _99_对数器.printSingleLinked(linkedNode1);
+            LinkedNode linkedNode2 = _99_对数器.randomGenLinkedList(maxLength, maxValue);
+            _99_对数器.printSingleLinked(linkedNode2);
+            LinkedNode sum = linkedAddSum(linkedNode1, linkedNode2);
             _99_对数器.printSingleLinked(sum);
             System.out.println("======");
         }

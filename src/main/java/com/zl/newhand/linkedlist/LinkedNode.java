@@ -6,25 +6,25 @@ import lombok.Data;
  * 节点
  */
 @Data
-public class Node<V> {
+public class LinkedNode<V> {
 
     // 值
     private V v;
 
     // 前继节点
-    private Node<V> pre;
+    private LinkedNode<V> pre;
 
     // 后继节点
-    private Node<V> next;
+    private LinkedNode<V> next;
 
-    public Node() {
+    public LinkedNode() {
     }
 
-    public Node(V v) {
+    public LinkedNode(V v) {
         this.v = v;
     }
 
-    public Node(V v, Node<V> next) {
+    public LinkedNode(V v, LinkedNode<V> next) {
         this.v = v;
         this.next = next;
     }
