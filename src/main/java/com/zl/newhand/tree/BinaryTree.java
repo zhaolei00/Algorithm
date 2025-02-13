@@ -56,13 +56,6 @@ public class BinaryTree {
         return root;
     }
 
-    //===============【题目】二叉树按层遍历并收集节点=====================
-    //https://leetcode.cn/problems/binary-tree-level-order-traversal/
-    // 思路:
-    // 先把root放入到队列中
-    // 步骤一: 拿出此时队列的size, 执行size次步骤二
-    // 步骤二: 弹出节点，先放左节点，再放右节点
-
     //===============【题目】二叉树按层遍历并收集节点 II=====================
     //https://leetcode.cn/problems/binary-tree-level-order-traversal-ii/
 

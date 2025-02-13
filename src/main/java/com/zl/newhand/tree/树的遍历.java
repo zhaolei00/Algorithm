@@ -56,7 +56,7 @@ public class 树的遍历 {
         }
     }
 
-    // 层序遍历
+    // 层序遍历 并各自收集每层节点
     // 思路: 因为返回值是每次节点的list，所以需要两个双端队列，来不断变化。
     public static List<List<Integer>> ceng1(TreeNode<Integer> root) {
         if (root == null) {
