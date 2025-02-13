@@ -87,6 +87,19 @@ public class 树的遍历 {
         return ans;
     }
 
+    // 递归序(很重要，任何非空节点，都到达三次)
+    // 这个需要好好理解，后续算法题的变种，都是靠这个原理进行解决的。
+    public static void f(TreeNode<Integer> root) {
+        if (root == null) {
+            return;
+        }
+        // 1. 什么信息都没有。只能有根节点的值。
+        f(root.left);
+        // 2. 能得到左子树的所有信息。
+        f(root.right);
+        // 3. 能得到右子树的所有信息
+    }
+
     public static void main(String[] args) {
         TreeNode<Integer> root = new TreeNode<>(4);
         TreeNode<Integer> a = new TreeNode<>(8);

@@ -23,29 +23,6 @@ public class BinaryTree {
         }
     }
 
-    // 递归序(很重要) 任何非空节点，都到达三次
-    private static void f(TreeNode treeNode) {
-        if (treeNode == null) {
-            return;
-        }
-        // 1 什么信息都没有
-        f(treeNode.left);
-        // 2 能拿到左子树的所有信息 lInfo
-        f(treeNode.right);
-        // 3 能拿到右子树的所有信息 rInfo
-    }
-
-    //===============【题目】判断两颗树是否结构相同=====================
-    private static boolean isSameTree(TreeNode head1, TreeNode head2) {
-        if (head1 == null ^ head2 == null) {
-            return false;
-        }
-        if (head1 == null && head2 == null) { // 为什么IDEA高亮? 此处只能是head1和head2都为空，或者都不为空。所以head2 == null是废话。
-            return true;
-        }
-        return head1.val == head2.val && isSameTree(head1.left, head2.left) && isSameTree(head2.right, head2.right);
-    }
-
     //===============【题目】判断一棵树是否是镜面树(对称树)=====================
     private static boolean isSymmetricTree(TreeNode root) {
         if (root == null) {
