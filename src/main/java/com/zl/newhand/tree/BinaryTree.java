@@ -23,14 +23,6 @@ public class BinaryTree {
         }
     }
 
-    //===============【题目】返回一棵树的最大深度=====================
-    private static int maxDepth(TreeNode root) {
-        if (root == null) {
-            return 0;
-        }
-        return Math.max(maxDepth(root.left), maxDepth(root.right)) + 1;
-    }
-
     //===============【题目】用先序数组和中序数组重建一棵树 条件:先序数组和中序数组没有重复值=====================
     private static TreeNode buildTree(int[] preorder, int[] inorder) {
         if (preorder == null || inorder == null || preorder.length != inorder.length) {
