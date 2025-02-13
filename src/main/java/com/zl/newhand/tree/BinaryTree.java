@@ -23,33 +23,6 @@ public class BinaryTree {
         }
     }
 
-    // 先序遍历
-    private static void pre(TreeNode treeNode) {
-        if (treeNode == null) {
-            return;
-        }
-        System.out.println(treeNode.val);
-        pre(treeNode.left);
-        pre(treeNode.right);
-    }
-
-    // 中序遍历
-    private static void mid(TreeNode treeNode) {
-        if (treeNode == null) {
-            return;
-        }
-        mid(treeNode.left);
-        System.out.println(treeNode.val);
-        mid(treeNode.right);
-    }
-
-    // 后序遍历
-    private static void post(TreeNode treeNode) {
-        post(treeNode.left);
-        post(treeNode.right);
-        System.out.println(treeNode.val);
-    }
-
     // 递归序(很重要) 任何非空节点，都到达三次
     private static void f(TreeNode treeNode) {
         if (treeNode == null) {
