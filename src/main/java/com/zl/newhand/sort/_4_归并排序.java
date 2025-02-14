@@ -51,6 +51,7 @@ public class _4_归并排序 {
     }
 
     //===============【题目】归并排序非递归实现=====================
+    // 这里的step代表，从左到右，每次把step为一组的保证有序。
     public static void mergeSort2(int[] arr) {
         if (arr == null || arr.length < 2) {
             return;
@@ -72,9 +73,35 @@ public class _4_归并排序 {
             }
         } while (step < N);
     }
+    // 对比mergeSort2的不同实现。 这里的step代表的是左数组和有数组的大小。
+    public static void mergeSort3(int[] arr) {
+        if (arr == null || arr.length < 2) {
+            return;
+        }
+        int N = arr.length;
+        int step = 1;
+        while (step < N) {
+            int L = 0;
+            while (L < N) {
+                // 刚刚好凑够左数组
+                if (N - L <= step) {
+                    break;
+                }
+                // 有右数组
+                int mid = L + step - 1;
+                int R = Math.min(mid + step, N - 1);
+                merge(arr, L, mid, R);
+                L = R + 1;
+            }
+            if (step > (N >> 1)) {
+                break;
+            }
+            step <<= 1;
+        }
+    }
 
     public static void main(String[] args) {
-        int times = 1000000;
+        int times = 100000;
         int maxLength = 1000;
         int maxValue = 1000;
         System.out.println("开始测试");
@@ -83,7 +110,7 @@ public class _4_归并排序 {
             int[] arr2 = _99_对数器.copyArray(arr1);
             int[] arr3 = _99_对数器.copyArray(arr1);
             mergeSort1(arr1);
-            mergeSort2(arr2);
+            mergeSort3(arr2);
             if (!_99_对数器.arrayEquals(arr1, arr2)) {
                 System.out.println("有错了:" + Arrays.toString(arr3));
                 System.out.println("有错了:" + Arrays.toString(arr1));
