@@ -10,8 +10,7 @@ public class 能否组成路径和 {
     // 给你二叉树的根节点root和一个表示目标和的整数targetSum。
     // 判断该树中是否存在根节点到叶子节点的路径，这条路径上所有节点值相加等于目标和targetSum。如果存在，返回true；否则，返回false。
     // 叶子节点是指没有子节点的节点。
-    // 思路:
-    //      方法一: 递归
+    // 思路: 递归
 
     public static boolean hasPathNum(TreeNode root, int targetSum) {
         if (root == null) {
