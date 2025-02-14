@@ -2,5 +2,5 @@ package com.zl.linkedlist;
 
 /**
  */
-public class 普通队列实现栈 {
+public class _8_数组实现队列 {
 }

@@ -25,8 +25,8 @@ public class QuestionCollection {
     //===============【题目1】设计一个特殊栈，获取栈中最小值时时间复杂度为o(1)=====================
     private static class MinStack {
 
-        private 单链表实现栈.MyStack dataStack;
-        private 单链表实现栈.MyStack mixStack;
+        private _5_单链表实现栈.MyStack dataStack;
+        private _5_单链表实现栈.MyStack mixStack;
 
         public void push(Integer val) {
             dataStack.push(val);
@@ -56,8 +56,8 @@ public class QuestionCollection {
     // 思路: 两个栈 push栈 pop栈
     private static class QueueByStack implements Queue<Integer> {
 
-        private final Stack<Integer> pushStack = new 单链表实现栈.MyStack();
-        private final Stack<Integer> popStack = new 单链表实现栈.MyStack();
+        private final Stack<Integer> pushStack = new _5_单链表实现栈.MyStack();
+        private final Stack<Integer> popStack = new _5_单链表实现栈.MyStack();
         ;
 
         @Override
@@ -102,8 +102,8 @@ public class QuestionCollection {
     // 思路: 两个队列 data队列 help队列 在取数据时，help队列用于数据转化，data和help交换
     private static class StackByQueue implements Stack<Integer> {
 
-        private Queue<Integer> dataQueue = new 链表实现队列.MyQueue();
-        private Queue<Integer> helpQueue = new 链表实现队列.MyQueue();
+        private Queue<Integer> dataQueue = new _4_链表实现队列.MyQueue();
+        private Queue<Integer> helpQueue = new _4_链表实现队列.MyQueue();
 
         @Override
         public boolean isEmpty() {

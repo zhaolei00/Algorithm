@@ -5,7 +5,7 @@ import com.zl.linkedlist.interfaces.Stack;
 /**
  *
  */
-public class 单链表实现栈 {
+public class _5_单链表实现栈 {
 
     // =========== 单链表实现栈(头插法) ===========
     // 功能: 入栈、出栈
