@@ -1,17 +1,13 @@
 package com.zl.newhand.sort;
 
+import com.zl.newhand.tiku._99_对数器;
+
 import java.util.Arrays;
 
 /**
  * 归并排序定义: 让左右都有序，最近进行合并。
  */
 public class _4_归并排序 {
-
-    public static void main(String[] args) {
-        int[] arr = new int[] {5, 2, 3, 1};
-        mergeSort1(arr);
-        System.out.println(Arrays.toString(arr));
-    }
 
     //===============【题目】归并排序递归实现=====================
     public static void mergeSort1(int[] arr) {
@@ -59,6 +55,44 @@ public class _4_归并排序 {
         if (arr == null || arr.length < 2) {
             return;
         }
+        int N = arr.length;
+        int step = 1; // 这个步长代表，步长个为一组, 步长以mid为中点，左和右进行merge。
+        do {
+            step <<= 1;
+            for (int i = 0; i < N; i += step) {
+                int L = i;
+                int R = L + step - 1;
+                int mid = L + ((R - L) >> 1);
+                // 代表右面没有了
+                if (mid >= N - 1) {
+                    continue;
+                }
+                // 右面可能比左面短，进行越界判断。
+                merge(arr, L, mid, R >= N ? N - 1: R);
+            }
+        } while (step < N);
     }
+
+    public static void main(String[] args) {
+        int times = 1000000;
+        int maxLength = 1000;
+        int maxValue = 1000;
+        System.out.println("开始测试");
+        for (int i = 0; i < times; i++) {
+            int[] arr1 = _99_对数器.randomGenIntArray(maxLength, maxValue);
+            int[] arr2 = _99_对数器.copyArray(arr1);
+            int[] arr3 = _99_对数器.copyArray(arr1);
+            mergeSort1(arr1);
+            mergeSort2(arr2);
+            if (!_99_对数器.arrayEquals(arr1, arr2)) {
+                System.out.println("有错了:" + Arrays.toString(arr3));
+                System.out.println("有错了:" + Arrays.toString(arr1));
+                System.out.println("有错了:" + Arrays.toString(arr2));
+                return;
+            }
+        }
+        System.out.println("Nice");
+    }
+
 
 }

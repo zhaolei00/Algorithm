@@ -38,6 +38,29 @@ public class _99_对数器 {
         return arr;
     }
 
+    public static int[] copyArray(int[] arr) {
+        if (arr == null) {
+            return null;
+        }
+        int[] copy = new int[arr.length];
+        for (int i = 0; i < arr.length; i++) {
+            copy[i] = arr[i];
+        }
+        return copy;
+    }
+
+    public static boolean arrayEquals(int[] arr1, int[] arr2) {
+        if (arr1 == arr2) {
+            return true;
+        }
+        for (int i = 0; i < arr1.length; i++) {
+            if (arr1[i] != arr2[i]) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     public static int[] randomGenNotEqualArray(int maxLength, int maxValue) {
         if (_4_随机数概率问题.equalProbability1() <= 0.1) {
             return null;
