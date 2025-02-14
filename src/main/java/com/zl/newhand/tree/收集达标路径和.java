@@ -1,5 +1,6 @@
 package com.zl.newhand.tree;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -11,7 +12,35 @@ public class 收集达标路径和 {
     // 叶子节点 是指没有子节点的节点。
     // 思路: 递归
     public static List<List<Integer>> path(TreeNode root, int targetNum) {
+        List<List<Integer>> ans = new ArrayList<>();
+        if (root == null) {
+            return ans;
+        }
+        process(root, 0, new ArrayList<>(), targetNum, ans);
+        return ans;
+    }
 
+    private static void process(TreeNode root, int pre, List<Integer> prePath, int target, List<List<Integer>> ans) {
+        if (root.left == null && root.right == null) {
+            if (pre + root.val == target) {
+                ArrayList<Integer> list = new ArrayList<>(prePath);
+                list.add(root.val);
+                ans.add(list);
+            }
+            return;
+        }
+
+        if (root.left != null) {
+            ArrayList<Integer> list = new ArrayList<>(prePath);
+            list.add(root.val);
+            process(root.left, pre + root.val, list, target, ans);
+        }
+
+        if (root.right != null) {
+            ArrayList<Integer> list = new ArrayList<>(prePath);
+            list.add(root.val);
+            process(root.right, pre + root.val, list, target, ans);
+        }
     }
 
 }
