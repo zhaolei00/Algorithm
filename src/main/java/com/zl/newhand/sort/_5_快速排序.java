@@ -3,6 +3,8 @@ package com.zl.newhand.sort;
 import com.zl.newhand.tiku._99_对数器;
 
 import java.util.Arrays;
+import java.util.Deque;
+import java.util.LinkedList;
 
 /**
  *
@@ -52,6 +54,34 @@ public class _5_快速排序 {
         arr[j] = temp;
     }
 
+    // 用队列保存之前递归的所有小任务。
+    public static void quickSort2(int[] arr) {
+        if (arr == null || arr.length < 2) {
+            return;
+        }
+        Deque<Task> deque = new LinkedList<>();
+        deque.addLast(new Task(0, arr.length - 1));
+        while (!deque.isEmpty()) {
+            Task task = deque.pollFirst();
+            if (task.L >= task.R) {
+                continue;
+            }
+            int[] partition = partition(arr, task.L, task.R);
+            deque.addLast(new Task(task.L, partition[0]));
+            deque.addLast(new Task(partition[1], task.R));
+        }
+    }
+
+    private static class Task {
+        public int L;
+        public int R;
+
+        public Task(int l, int r) {
+            L = l;
+            R = r;
+        }
+    }
+
 
     public static void main(String[] args) {
         System.out.println("测试开始");
@@ -63,7 +93,7 @@ public class _5_快速排序 {
             int[] arr2 = _99_对数器.copyArray(arr1);
             int[] arr3 = _99_对数器.copyArray(arr1);
             _1_选择排序.selectSort(arr1);
-            quickSort(arr2);
+            quickSort2(arr2);
             if (!_99_对数器.arrayEquals(arr1, arr2)) {
                 System.out.println("算法出错了: " + Arrays.toString(arr1));
                 System.out.println("算法出错了: " + Arrays.toString(arr2));
