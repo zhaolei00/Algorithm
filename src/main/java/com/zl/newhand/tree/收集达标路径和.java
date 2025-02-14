@@ -1,15 +1,8 @@
 package com.zl.newhand.tree;
 
 /**
- * @Author : zhaolei
- * @Date : Create in 2023/4/9 21:30
- * @Description :
- * 二叉树:
- * 先序遍历: 每一棵子树, 打印顺序为 头 左 右
- * 中序遍历: 每一棵子树, 打印顺序为 左 头 右
- * 后序遍历: 每一棵子树, 打印顺序为 左 右 头
  */
-public class BinaryTree {
+public class 收集达标路径和 {
 
     // ===============【题目】收集达标路径和=====================
     // 给你二叉树的根节点 root 和一个整数目标和 targetSum ，找出所有 从根节点到叶子节点 路径总和等于给定目标和的路径。
