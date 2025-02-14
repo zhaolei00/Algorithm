@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 /**
  */
-public class _2_选择排序 {
+public class _1_选择排序 {
 
     /**
      * 思路:

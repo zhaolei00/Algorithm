@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 /**
  */
-public class _1_冒泡排序 {
+public class _2_冒泡排序 {
 
     /**
      * 最大值就像水里的泡泡一样，一点一点的往上浮。

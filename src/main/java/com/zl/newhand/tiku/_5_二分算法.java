@@ -1,6 +1,6 @@
 package com.zl.newhand.tiku;
 
-import com.zl.newhand.sort._2_选择排序;
+import com.zl.newhand.sort._1_选择排序;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -42,7 +42,7 @@ public class _5_二分算法 {
         for (int i = 0; i < times; i++) {
             int[] arr = _99_对数器.randomGenIntArray(maxLength, maxValue);
             int num = _4_随机数概率问题.equalProbability5(maxValue);
-            _2_选择排序.selectSort(arr);
+            _1_选择排序.selectSort(arr);
             if (!checkQuestion1(arr, question1(arr, num), num)) {
                 System.out.println("fail 算法有问题: num:" + num + ", " + Arrays.toString(arr));
                 break;
@@ -98,7 +98,7 @@ public class _5_二分算法 {
         for (int i = 0; i < times; i++) {
             int[] arr = _99_对数器.randomGenIntArray(maxLength, maxValue);
             int num = _4_随机数概率问题.equalProbability5(maxValue);
-            _2_选择排序.selectSort(arr);
+            _1_选择排序.selectSort(arr);
             if (!checkQuestion2(arr, question2(arr, num), num)) {
                 System.out.println("fail 算法有问题: num:" + num + ", " + Arrays.toString(arr));
                 break;
@@ -147,7 +147,7 @@ public class _5_二分算法 {
         for (int i = 0; i < times; i++) {
             int[] arr = _99_对数器.randomGenIntArray(maxLength, maxValue);
             int num = _4_随机数概率问题.equalProbability5(maxValue);
-            _2_选择排序.selectSort(arr);
+            _1_选择排序.selectSort(arr);
             if (!checkQuestion2(arr, question2(arr, num), num)) {
                 System.out.println("fail 算法有问题: num:" + num + ", " + Arrays.toString(arr));
                 break;
