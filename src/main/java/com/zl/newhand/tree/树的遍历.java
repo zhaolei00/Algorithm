@@ -1,9 +1,6 @@
 package com.zl.newhand.tree;
 
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.Deque;
-import java.util.List;
+import java.util.*;
 
 /**
  */
@@ -59,29 +56,52 @@ public class 树的遍历 {
     // 层序遍历 并各自收集每层节点
     // 思路: 因为返回值是每次节点的list，所以需要两个双端队列，来不断变化。
     public static List<List<Integer>> ceng1(TreeNode<Integer> root) {
+        List<List<Integer>> ans = new LinkedList<>();
         if (root == null) {
-            return new ArrayList<>();
+            return ans;
         }
-        Deque<TreeNode<Integer>> deque1 = new ArrayDeque<>();
-        Deque<TreeNode<Integer>> deque2 = new ArrayDeque<>();
-        deque1.addLast(root);
-        List<List<Integer>> ans = new ArrayList<>();
-        List<Integer> mid = new ArrayList<>();
-        while (!deque1.isEmpty()) {
-            TreeNode<Integer> node = deque1.pollFirst();
-            if (node.left != null) {
-                deque2.addLast(node.left);
-            }
-            if (node.right != null) {
-                deque2.addLast(node.right);
-            }
-            mid.add(node.value);
-            if (deque1.isEmpty()) {
-                Deque<TreeNode<Integer>> temp = deque1;
-                deque1 = deque2;
-                deque2 = temp;
+        Deque<TreeNode<Integer>> deque = new LinkedList<>();
+        deque.addLast(root);
+        while (!deque.isEmpty()) {
+            List<Integer> mid = new LinkedList<>();
+            int size = deque.size();
+            for (int i = 0; i < size; i++) {
+                TreeNode<Integer> treeNode = deque.pollFirst();
+                mid.add(treeNode.value);
+                if (treeNode.left != null) {
+                    deque.addLast(treeNode.left);
+                }
+                if (treeNode.right != null) {
+                    deque.addLast(treeNode.right);
+                }
                 ans.add(mid);
-                mid = new ArrayList<>();
+            }
+        }
+        return ans;
+    }
+
+    //===============【题目】二叉树按层遍历并收集节点 II=====================
+    //https://leetcode.cn/problems/binary-tree-level-order-traversal-ii/
+    public static List<List<Integer>> ceng2(TreeNode<Integer> root) {
+        List<List<Integer>> ans = new LinkedList<>();
+        if (root == null) {
+            return ans;
+        }
+        Deque<TreeNode<Integer>> deque = new LinkedList<>();
+        deque.addLast(root);
+        while (!deque.isEmpty()) {
+            List<Integer> mid = new LinkedList<>();
+            int size = deque.size();
+            for (int i = 0; i < size; i++) {
+                TreeNode<Integer> treeNode = deque.pollFirst();
+                mid.add(treeNode.value);
+                if (treeNode.left != null) {
+                    deque.addLast(treeNode.left);
+                }
+                if (treeNode.right != null) {
+                    deque.addLast(treeNode.right);
+                }
+                ans.add(0, mid);
             }
         }
         return ans;

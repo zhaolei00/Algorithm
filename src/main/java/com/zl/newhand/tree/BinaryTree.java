@@ -13,10 +13,6 @@ import java.util.HashMap;
  */
 public class BinaryTree {
 
-    //===============【题目】二叉树按层遍历并收集节点 II=====================
-    //https://leetcode.cn/problems/binary-tree-level-order-traversal-ii/
-
-
     // 为什么LinkedList比Stack慢？
 
     //===============【题目】判断二叉树是否为平衡二叉树=====================
