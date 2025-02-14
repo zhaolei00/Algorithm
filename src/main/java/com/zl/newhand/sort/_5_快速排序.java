@@ -15,18 +15,18 @@ public class _5_快速排序 {
         if (arr == null || arr.length < 2) {
             return;
         }
-        f(arr, 0, arr.length - 1);
+        partition(arr, 0, arr.length - 1);
     }
 
-    private static void f(int[] arr, int L, int R) {
+    private static void partition(int[] arr, int L, int R) {
         if (L >= R) {
             return;
         }
         int[] pari = splitNum(arr, L, R);
         // pari[0] 小于区的数
         // pari[1] 大于区的数
-        f(arr, L, pari[0]); // 左面有序继续递归
-        f(arr, pari[1], R); // 右面有序继续递归
+        partition(arr, L, pari[0]); // 左面有序继续递归
+        partition(arr, pari[1], R); // 右面有序继续递归
     }
 
     private static int[] splitNum(int[] arr, int L, int R) {
