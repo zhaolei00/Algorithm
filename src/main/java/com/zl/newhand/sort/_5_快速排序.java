@@ -18,11 +18,10 @@ public class _5_快速排序 {
     }
 
     private static void f(int[] arr, int L, int R) {
-        // 10 3 5 6 7 4
         if (L >= R) {
             return;
         }
-        int mid = splitNum(arr, L, R); // 0~3 0
+        int mid = splitNum(arr, L, R);
         f(arr, L, mid - 1); // 左面有序继续递归
         f(arr, mid + 1, R); // 右面有序继续递归
     }
