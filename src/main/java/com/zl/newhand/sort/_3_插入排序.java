@@ -3,9 +3,6 @@ package com.zl.newhand.sort;
 import java.util.Arrays;
 
 /**
- * @Author zl
- * @Date 2025/2/10 16:40
- * @Description
  */
 public class _3_插入排序 {
 

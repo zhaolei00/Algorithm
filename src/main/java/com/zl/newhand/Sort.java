@@ -1,9 +1,7 @@
 package com.zl.newhand;
 
 /**
- * @Author : zhaolei
- * @Date : Create in 2023/4/7 12:06
- * @Description : 排序算法
+ * 排序算法
  */
 public class Sort {
 

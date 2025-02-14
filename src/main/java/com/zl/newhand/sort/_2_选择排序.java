@@ -3,9 +3,6 @@ package com.zl.newhand.sort;
 import java.util.Arrays;
 
 /**
- * @Author zl
- * @Date 2025/2/10 11:55
- * @Description
  */
 public class _2_选择排序 {
 

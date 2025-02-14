@@ -3,9 +3,7 @@ package com.zl.newhand.linkedlist;
 import com.zl.newhand.linkedlist.interfaces.Stack;
 
 /**
- * @Author : zhaolei
- * @Date : Create in 2023/4/14 13:39
- * @Description : 栈 数组实现
+ * 栈 数组实现
  */
 public class StackByArray<T> implements Stack<T> {
 

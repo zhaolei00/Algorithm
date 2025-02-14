@@ -4,9 +4,6 @@ import java.util.Comparator;
 import java.util.PriorityQueue;
 
 /**
- * @Author zl
- * @Date 2025/2/13 11:50
- * @Description
  */
 public class 合并K个有序链表 {
 

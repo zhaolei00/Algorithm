@@ -4,9 +4,7 @@ import com.zl.newhand.linkedlist.interfaces.Queue;
 import com.zl.newhand.linkedlist.interfaces.Stack;
 
 /**
- * @Author : zhaolei
- * @Date : Create in 2023/4/9 01:32
- * @Description : 链表算法题集合
+ * 链表算法题集合
  */
 public class QuestionCollection {
 

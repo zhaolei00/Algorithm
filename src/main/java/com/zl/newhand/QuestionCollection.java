@@ -1,9 +1,6 @@
 package com.zl.newhand;
 
 /**
- * @Author : zhaolei
- * @Date : Create in 2023/4/15 12:23
- * @Description :
  */
 public class QuestionCollection {
 

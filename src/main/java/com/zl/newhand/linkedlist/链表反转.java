@@ -7,9 +7,6 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * @Author zl
- * @Date 2025/2/11 21:07
- * @Description
  */
 public class 链表反转 {
 

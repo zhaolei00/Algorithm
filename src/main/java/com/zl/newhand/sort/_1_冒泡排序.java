@@ -3,9 +3,6 @@ package com.zl.newhand.sort;
 import java.util.Arrays;
 
 /**
- * @Author zl
- * @Date 2025/2/10 14:15
- * @Description
  */
 public class _1_冒泡排序 {
 

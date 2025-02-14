@@ -3,9 +3,7 @@ package com.zl.newhand.linkedlist;
 import com.zl.newhand.linkedlist.interfaces.Deque;
 
 /**
- * @Author : zhaolei
- * @Date : Create in 2023/4/14 13:39
- * @Description : 双端队列 数组实现
+ * 双端队列 数组实现
  */
 public class DequeByArray<T> implements Deque<T> {
 

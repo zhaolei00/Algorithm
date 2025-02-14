@@ -1,9 +1,6 @@
 package com.zl.newhand;
 
 /**
- * @Author : zhaolei
- * @Date : Create in 2023/4/14 09:25
- * @Description :
  */
 public class XOR {
 
