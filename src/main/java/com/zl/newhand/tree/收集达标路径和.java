@@ -30,17 +30,15 @@ public class 收集达标路径和 {
             return;
         }
 
+        prePath.add(root.val);
         if (root.left != null) {
-            ArrayList<Integer> list = new ArrayList<>(prePath);
-            list.add(root.val);
-            process(root.left, pre + root.val, list, target, ans);
+            process(root.left, pre + root.val, prePath, target, ans);
         }
 
         if (root.right != null) {
-            ArrayList<Integer> list = new ArrayList<>(prePath);
-            list.add(root.val);
-            process(root.right, pre + root.val, list, target, ans);
+            process(root.right, pre + root.val, prePath, target, ans);
         }
+        prePath.remove(prePath.size() - 1);
     }
 
 }
