@@ -6,16 +6,16 @@ public class 判断是否为平衡二叉树 {
 
     //===============【题目】判断二叉树是否为平衡二叉树=====================
     // 平衡二叉树定义: 左子树和右子树都是平衡二叉树，并且深度差不大于1。
-    public static boolean isBalanceTree(TreeNode<Integer> root) {
+    public static boolean isBalanceTree(TreeNode root) {
         return getTreeNodeInfo(root).isBalance;
     }
 
     public static void main(String[] args) {
-        TreeNode<Integer> root = new TreeNode<>(3);
-        TreeNode<Integer> a = new TreeNode<>(9);
-        TreeNode<Integer> b = new TreeNode<>(20);
-        TreeNode<Integer> c = new TreeNode<>(15);
-        TreeNode<Integer> d = new TreeNode<>(7);
+        TreeNode root = new TreeNode(3);
+        TreeNode a = new TreeNode(9);
+        TreeNode b = new TreeNode(20);
+        TreeNode c = new TreeNode(15);
+        TreeNode d = new TreeNode(7);
         root.left = a;
         root.right = b;
         b.left = c;
@@ -24,7 +24,7 @@ public class 判断是否为平衡二叉树 {
     }
 
     // 计算此树的Info信息
-    private static Info getTreeNodeInfo(TreeNode<Integer> root) {
+    private static Info getTreeNodeInfo(TreeNode root) {
         if (root == null) {
             return new Info(true, 0);
         }

@@ -5,7 +5,7 @@ package com.zl.newhand.tree;
 public class 二叉树最大深度 {
 
     // ===============【题目】返回一棵树的最大深度=====================
-    public static int maxDepth(TreeNode<Integer> root) {
+    public static int maxDepth(TreeNode root) {
         if (root == null) {
             return 0;
         }

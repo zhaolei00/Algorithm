@@ -3,15 +3,24 @@ package com.zl.newhand.tree;
 /**
  * 树节点
  */
-public class TreeNode<V> {
+public class TreeNode {
 
-    public V value;
+    public int val;
 
-    public TreeNode<V> left;
+    public TreeNode left;
 
-    public TreeNode<V> right;
+    public TreeNode right;
 
-    public TreeNode(V value) {
-        this.value = value;
+    TreeNode() {
+    }
+
+    public TreeNode(int val) {
+        this.val = val;
+    }
+
+    TreeNode(int val, TreeNode left, TreeNode right) {
+        this.val = val;
+        this.left = left;
+        this.right = right;
     }
 }
