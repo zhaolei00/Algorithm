@@ -5,11 +5,12 @@ import com.zl.newhand.tiku._99_对数器;
 import java.util.Arrays;
 
 /**
+ *
  */
 public class _5_快速排序 {
 
     //===============【题目】快速排序 递归实现=====================
-    // 在[L,R]中以, 以R为分界线，[L,T] 都小于等于R，[T, R]都大于R
+    // 在[L,R]中以, 以R为分界线，分为三个区间，小于区间、等于区间、大于区间
     public static void quickSort(int[] arr) {
         if (arr == null || arr.length < 2) {
             return;
@@ -21,21 +22,28 @@ public class _5_快速排序 {
         if (L >= R) {
             return;
         }
-        int mid = splitNum(arr, L, R);
-        f(arr, L, mid - 1); // 左面有序继续递归
-        f(arr, mid + 1, R); // 右面有序继续递归
+        int[] pari = splitNum(arr, L, R);
+        // pari[0] 小于区的数
+        // pari[1] 大于区的数
+        f(arr, L, pari[0]); // 左面有序继续递归
+        f(arr, pari[1], R); // 右面有序继续递归
     }
 
-    private static int splitNum(int[] arr, int L, int R) {
-        int index = L; // 处理的值
-        int lessEqualsIndex = L - 1; // 小于等于区
-        while (index <= R) {
-            if (arr[index] <= arr[R]) {
-                swap(arr, ++lessEqualsIndex, index);
+    private static int[] splitNum(int[] arr, int L, int R) {
+        int index = L;
+        int lessIndex = L - 1;
+        int gtIndex = R;
+        while (index < gtIndex) {
+            if (arr[index] < arr[R]) {
+                swap(arr, ++lessIndex, index++);
+            } else if (arr[index] > arr[R]) {
+                swap(arr, index, --gtIndex);
+            } else {
+                index++;
             }
-            index++;
         }
-        return lessEqualsIndex;
+        swap(arr, gtIndex++, R);
+        return new int[]{lessIndex, gtIndex};
     }
 
     private static void swap(int[] arr, int i, int j) {
