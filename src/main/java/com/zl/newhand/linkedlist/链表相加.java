@@ -13,51 +13,51 @@ public class 链表相加 {
     // 解释: 642 + 483 = 1125
     // 思路: 前提: 分为长短链表，长:l 短:s 分为三个阶段: l有s有，l有s没有，l没有s没有
 
-    public static ListNode<Integer> linkedAddSum(ListNode<Integer> head1, ListNode<Integer> head2) {
+    public static ListNode linkedAddSum(ListNode head1, ListNode head2) {
         if (head1 == null || head2 == null) {
             return head1 == null ? head2 : head1;
         }
         int length1 = length(head1);
         int length2 = length(head2);
-        ListNode<Integer> lengthMinHead = length1 <= length2 ? head1 : head2;
-        ListNode<Integer> lengthMaxHead = lengthMinHead == head1 ? head2 : head1;
+        ListNode lengthMinHead = length1 <= length2 ? head1 : head2;
+        ListNode lengthMaxHead = lengthMinHead == head1 ? head2 : head1;
         // 以短的为主，开始遍历进行相加。短的遍历完成后，链上长的剩余的。
         int carry = 0;
-        ListNode<Integer> ans = lengthMaxHead;
-        ListNode<Integer> pre = null;
+        ListNode ans = lengthMaxHead;
+        ListNode pre = null;
         while (lengthMaxHead != null) {
             pre = lengthMaxHead;
             if (lengthMinHead != null) {
-                int sum = lengthMinHead.getV() + lengthMaxHead.getV() + carry;
+                int sum = lengthMinHead.val + lengthMaxHead.val + carry;
                 carry = sum / 10;
-                lengthMaxHead.setV(sum % 10);
-                lengthMaxHead = lengthMaxHead.getNext();
-                lengthMinHead = lengthMinHead.getNext();
+                lengthMaxHead.val = sum % 10;
+                lengthMaxHead = lengthMaxHead.next;
+                lengthMinHead = lengthMinHead.next;
             } else {
                 if (carry == 0) {
                     break;
                 }
-                int sum = lengthMaxHead.getV() + carry;
+                int sum = lengthMaxHead.val + carry;
                 carry = sum / 10;
-                lengthMaxHead.setV(sum % 10);
-                lengthMaxHead = lengthMaxHead.getNext();
+                lengthMaxHead.val = sum % 10;
+                lengthMaxHead = lengthMaxHead.next;
             }
         }
         // 所有节点都处理完，还有进位，新建个节点
         if (carry > 0) {
-            pre.setNext(new ListNode<>(carry));
+            pre.next = new ListNode(carry);
         }
         return ans;
     }
 
-    public static int length(ListNode<Integer> head) {
+    public static int length(ListNode head) {
         if (head == null) {
             return 0;
         }
         int size = 0;
         while (head != null) {
             size++;
-            head = head.getNext();
+            head = head.next;
         }
         return size;
     }

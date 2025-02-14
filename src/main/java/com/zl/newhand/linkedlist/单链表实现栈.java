@@ -9,9 +9,9 @@ public class 单链表实现栈 {
 
     // =========== 单链表实现栈(头插法) ===========
     // 功能: 入栈、出栈
-    public static class MyStack<V> implements Stack<V> {
+    public static class MyStack implements Stack<Integer> {
 
-        private ListNode<V> head;
+        private ListNode head;
 
         private int size;
 
@@ -26,30 +26,30 @@ public class 单链表实现栈 {
         }
 
         @Override
-        public void push(V v) {
-            ListNode<V> cur = new ListNode<>(v);
-            cur.setNext(head);
+        public void push(Integer val) {
+            ListNode cur = new ListNode(val);
+            cur.next = head;
             head = cur;
             size++;
         }
 
         @Override
-        public V poll() {
+        public Integer poll() {
             if (head == null) {
                 return null;
             }
-            V ans = head.getV();
-            head = head.getNext();
+            Integer ans = head.val;
+            head = head.next;
             size--;
             return ans;
         }
 
         @Override
-        public V peek() {
+        public Integer peek() {
             if (head == null) {
                 return null;
             }
-            return head.getV();
+            return head.val;
         }
     }
 

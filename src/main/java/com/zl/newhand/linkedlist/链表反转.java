@@ -18,8 +18,8 @@ public class 链表反转 {
         ListNode pre = null; // 头节点时，前面节点是null。
         ListNode next;
         while (head != null) {
-            next = head.getNext();
-            head.setNext(pre);
+            next = head.next;
+            head.next = pre;
             pre = head;
             head = next;
         }
@@ -37,7 +37,7 @@ public class 链表反转 {
             ListNode oldHeadTemp = oldHead;
             while (oldHeadTemp != null) {
                 oldListNodeList.add(oldHeadTemp);
-                oldHeadTemp = oldHeadTemp.getNext();
+                oldHeadTemp = oldHeadTemp.next;
             }
             ListNode newHead = singleLinkedReverse(oldHead);
             if (!checkSingleLinkedReverse(oldListNodeList, newHead)) {
@@ -53,7 +53,7 @@ public class 链表反转 {
         List<ListNode> newListNodeList = new ArrayList<>();
         while (newHead != null) {
             newListNodeList.add(newHead);
-            newHead = newHead.getNext();
+            newHead = newHead.next;
         }
         Collections.reverse(newListNodeList);
         return oldListNodeList.equals(newListNodeList);
@@ -64,9 +64,9 @@ public class 链表反转 {
         ListNode pre = null;
         ListNode next;
         while (head != null) {
-            next = head.getNext();
-            head.setPre(next);
-            head.setNext(pre);
+            next = head.next;
+            head.pre = next;
+            head.next = pre;
             pre = head;
             head = next;
         }

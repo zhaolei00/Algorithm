@@ -91,7 +91,7 @@ public class _99_对数器 {
                 tail = temp;
                 continue;
             }
-            tail.setNext(temp);
+            tail.next = temp;
             tail = temp;
         }
         return head;
@@ -100,10 +100,10 @@ public class _99_对数器 {
     /**
      * 随机生成有序单向链表
      */
-    public static ListNode<Integer> randomGenSortLinkedList(int maxLength, int maxValue) {
+    public static ListNode randomGenSortLinkedList(int maxLength, int maxValue) {
         int length = _4_随机数概率问题.equalProbability5(maxLength - 1) + 1;
-        ListNode<Integer> head = null;
-        ListNode<Integer> tail = null;
+        ListNode head = null;
+        ListNode tail = null;
         List<Integer> list = new ArrayList<>();
         for (int i = 0; i < length; i++) {
             list.add(_4_随机数概率问题.equalProbability5(maxValue));
@@ -111,10 +111,10 @@ public class _99_对数器 {
         Collections.sort(list);
         for (Integer value : list) {
             if (head == null) {
-                head = tail = new ListNode<>(value);
+                head = tail = new ListNode(value);
             } else {
-                ListNode<Integer> temp = new ListNode<>(value);
-                tail.setNext(temp);
+                ListNode temp = new ListNode(value);
+                tail.next = temp;
                 tail = temp;
             }
         }
@@ -135,8 +135,8 @@ public class _99_对数器 {
                 tail = temp;
                 continue;
             }
-            tail.setNext(temp);
-            temp.setPre(tail);
+            tail.next = temp;
+            temp.pre = tail;
             tail = temp;
         }
         return head;
@@ -150,8 +150,8 @@ public class _99_对数器 {
             return;
         }
         while (head != null) {
-            System.out.print(head.getV());
-            head = head.getNext();
+            System.out.print(head.val);
+            head = head.next;
             if (head != null) {
                 System.out.print("->");
             }

@@ -1,7 +1,5 @@
 package com.zl.newhand.linkedlist;
 
-import lombok.Data;
-
 /**
  * 反转链表相关算法
  */
@@ -40,7 +38,6 @@ public class ReverseLinkedList {
         deleteNodeByValue(head, 5);
     }
 
-    @Data
     private static class ListNode {
         private int val;
 

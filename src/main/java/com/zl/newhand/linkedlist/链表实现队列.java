@@ -2,7 +2,6 @@ package com.zl.newhand.linkedlist;
 
 import com.zl.newhand.linkedlist.interfaces.Deque;
 import com.zl.newhand.linkedlist.interfaces.Queue;
-import lombok.Data;
 
 /**
  *
@@ -11,10 +10,9 @@ public class 链表实现队列 {
 
     // =========== 单链表实现队列 ===========
     // 功能: 增、取、看
-    @Data
-    public static class MyQueue<V> implements Queue<V> {
-        private ListNode<V> head;
-        private ListNode<V> tail;
+    public static class MyQueue implements Queue<Integer> {
+        private ListNode head;
+        private ListNode tail;
         private int size;
 
         @Override
@@ -28,24 +26,24 @@ public class 链表实现队列 {
         }
 
         @Override
-        public void offer(V v) {
-            ListNode<V> cur = new ListNode<>(v);
+        public void offer(Integer val) {
+            ListNode cur = new ListNode(val);
             if (head == null) {
                 head = tail = cur;
             } else {
-                tail.setNext(cur);
+                tail.next = cur;
                 tail = cur;
             }
             size++;
         }
 
         @Override
-        public V poll() {
+        public Integer poll() {
             if (head == null) {
                 return null;
             }
-            V ans = head.getV();
-            head = head.getNext();
+            Integer ans = head.val;
+            head = head.next;
             if (head == null) {
                 tail = null;
             }
@@ -54,10 +52,10 @@ public class 链表实现队列 {
         }
 
         @Override
-        public V peek() {
-            V ans = null;
+        public Integer peek() {
+            Integer ans = null;
             if (head != null) {
-                ans = head.getV();
+                ans = head.val;
             }
             return ans;
         }
@@ -67,10 +65,9 @@ public class 链表实现队列 {
     // 功能: 头增、头取、头看、尾增、尾取、尾看
     // tips: 单链表为什么不能实现双端队列?
     //       因为头增、头取、尾增用单链表都能实现，但是尾取实现不了。因为取完尾后，tail找不到上一个节点。只能从前面遍历。那么复杂度就不是o(1),而是o(n)了。
-    @Data
-    public static class MyDeque<V> implements Deque<V> {
-        private ListNode<V> head;
-        private ListNode<V> tail;
+    public static class MyDeque implements Deque<Integer> {
+        private ListNode head;
+        private ListNode tail;
         private int size;
 
         @Override
@@ -84,59 +81,59 @@ public class 链表实现队列 {
         }
 
         @Override
-        public void firstOffer(V v) {
-            ListNode<V> cur = new ListNode<>(v);
+        public void firstOffer(Integer val) {
+            ListNode cur = new ListNode(val);
             if (head == null) {
                 head = tail = cur;
             } else {
-                cur.setNext(head);
-                head.setPre(cur);
+                cur.next = head;
+                head.pre = cur;
                 head = cur;
             }
             size++;
         }
 
         @Override
-        public void lastOffer(V v) {
-            ListNode<V> cur = new ListNode<>(v);
+        public void lastOffer(Integer val) {
+            ListNode cur = new ListNode(val);
             if (head == null) {
                 head = tail = cur;
             } else {
-                cur.setPre(tail);
-                tail.setNext(cur);
+                cur.pre = tail;
+                tail.next = cur;
                 tail = cur;
             }
             size++;
         }
 
         @Override
-        public V firstPoll() {
+        public Integer firstPoll() {
             if (head == null) {
                 return null;
             }
-            V ans = head.getV();
+            Integer ans = head.val;
             size--;
             if (head == tail) {
                 head = tail = null;
             } else {
-                head = head.getNext();
-                head.setPre(null);
+                head = head.next;
+                head.pre = null;
             }
             return ans;
         }
 
         @Override
-        public V lastPoll() {
+        public Integer lastPoll() {
             if (head == null) {
                 return null;
             }
-            V ans = tail.getV();
+            Integer ans = tail.val;
             size--;
             if (head == tail) {
                 head = tail = null;
             } else {
-                tail = tail.getPre();
-                tail.setNext(null);
+                tail = tail.pre;
+                tail.next = null;
             }
             return ans;
         }

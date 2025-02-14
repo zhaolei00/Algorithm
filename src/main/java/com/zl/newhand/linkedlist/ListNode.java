@@ -1,31 +1,28 @@
 package com.zl.newhand.linkedlist;
 
-import lombok.Data;
-
 /**
  * 链表节点
  */
-@Data
-public class ListNode<V> {
+public class ListNode {
 
     // 值
-    private V v;
+    public int val;
 
     // 前继节点
-    private ListNode<V> pre;
+    public ListNode pre;
 
     // 后继节点
-    private ListNode<V> next;
+    public ListNode next;
 
     public ListNode() {
     }
 
-    public ListNode(V v) {
-        this.v = v;
+    public ListNode(int val) {
+        this.val = val;
     }
 
-    public ListNode(V v, ListNode<V> next) {
-        this.v = v;
+    public ListNode(int val, ListNode next) {
+        this.val = val;
         this.next = next;
     }
 }
