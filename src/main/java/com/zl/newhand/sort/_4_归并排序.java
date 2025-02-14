@@ -74,6 +74,7 @@ public class _4_归并排序 {
         } while (step < N);
     }
     // 对比mergeSort2的不同实现。 这里的step代表的是左数组和有数组的大小。
+    // 未考虑数越界变成负数问题。
     public static void mergeSort3(int[] arr) {
         if (arr == null || arr.length < 2) {
             return;
@@ -92,9 +93,6 @@ public class _4_归并排序 {
                 int R = Math.min(mid + step, N - 1);
                 merge(arr, L, mid, R);
                 L = R + 1;
-            }
-            if (step > (N >> 1)) {
-                break;
             }
             step <<= 1;
         }
