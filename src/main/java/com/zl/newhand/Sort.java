@@ -5,26 +5,6 @@ package com.zl.newhand;
  */
 public class Sort {
 
-    /**
-     * 打印数组
-     */
-    private static void printArr(int[] arr) {
-        if (arr == null || arr.length == 0) {
-            return;
-        }
-        for (int i : arr) {
-            System.out.print(i + " ");
-        }
-        System.out.println();
-    }
-
-    public static void main(String[] args) {
-        int[] arr = {3, 6, 9, 4, 2, 3, 5, 8, 7, 9};
-        printArr(arr);
-        mergeSort2(arr);
-        printArr(arr);
-    }
-
     //===============【题目】归并排序 递归实现=====================
     // 思路: 数组arr, 让数组L到R有序，拆解成L到mid和mid+1到R有序，再进行L到mid和mid+1到R merge。
     // 时间复杂度: o(N*logN)
