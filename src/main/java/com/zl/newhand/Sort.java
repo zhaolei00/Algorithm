@@ -5,26 +5,6 @@ package com.zl.newhand;
  */
 public class Sort {
 
-    //===============【题目】归并排序 递归实现=====================
-    // 思路: 数组arr, 让数组L到R有序，拆解成L到mid和mid+1到R有序，再进行L到mid和mid+1到R merge。
-    // 时间复杂度: o(N*logN)
-    private static void mergeSort(int[] arr) {
-        if (arr == null || arr.length < 2) {
-            return;
-        }
-        mergeSort(arr, 0, arr.length - 1);
-    }
-
-    private static void mergeSort(int[] arr, int L, int R) {
-        if (L == R) {
-            return;
-        }
-        int mid = L + (R - L) >> 1;
-        mergeSort(arr, L, mid);
-        mergeSort(arr, mid + 1, R);
-        merge(arr, L, mid, R);
-    }
-
     private static void merge(int[] arr, int l, int m, int r) {
         int[] help = new int[r - l + 1];
         int index = 0;
