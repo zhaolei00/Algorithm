@@ -2,7 +2,7 @@ package com.zl.newhand.tree;
 
 /**
  */
-public class 判断两个二叉树相同 {
+public class _1_判断两个二叉树相同 {
 
     // ===============【题目】判断两颗树是否结构相同=====================
     public static boolean isSameTree(TreeNode root1, TreeNode root2) {

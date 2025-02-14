@@ -5,10 +5,10 @@ import java.util.Map;
 
 /**
  */
-public class 用先中后序数组重建二叉树 {
+public class _5_用先中后序数组重建二叉树 {
 
     //===============【题目】用先序数组和中序数组重建一棵树 条件:先序数组和中序数组没有重复值=====================
-    public static TreeNode buildTree1(int[] xianArr, int[] zhongArr) {
+    public static TreeNode buildTree(int[] xianArr, int[] zhongArr) {
         if (xianArr == null || zhongArr == null || xianArr.length != zhongArr.length) {
             return null;
         }

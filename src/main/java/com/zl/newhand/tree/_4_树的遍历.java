@@ -4,7 +4,7 @@ import java.util.*;
 
 /**
  */
-public class 树的遍历 {
+public class _4_树的遍历 {
 
     // 先序遍历 先父
     public static void xian(TreeNode root) {
@@ -42,13 +42,13 @@ public class 树的遍历 {
         Deque<TreeNode> deque = new ArrayDeque<>();
         deque.addLast(root);
         while (!deque.isEmpty()) {
-            TreeNode treeNode = deque.getFirst();
-            System.out.println(treeNode.val);
-            if (treeNode.left != null) {
-                deque.addLast(treeNode.left);
+            TreeNode a0TreeNode = deque.getFirst();
+            System.out.println(a0TreeNode.val);
+            if (a0TreeNode.left != null) {
+                deque.addLast(a0TreeNode.left);
             }
-            if (treeNode.right != null) {
-                deque.addLast(treeNode.right);
+            if (a0TreeNode.right != null) {
+                deque.addLast(a0TreeNode.right);
             }
         }
     }
@@ -66,13 +66,13 @@ public class 树的遍历 {
             List<Integer> mid = new LinkedList<>();
             int size = deque.size();
             for (int i = 0; i < size; i++) {
-                TreeNode treeNode = deque.pollFirst();
-                mid.add(treeNode.val);
-                if (treeNode.left != null) {
-                    deque.addLast(treeNode.left);
+                TreeNode a0TreeNode = deque.pollFirst();
+                mid.add(a0TreeNode.val);
+                if (a0TreeNode.left != null) {
+                    deque.addLast(a0TreeNode.left);
                 }
-                if (treeNode.right != null) {
-                    deque.addLast(treeNode.right);
+                if (a0TreeNode.right != null) {
+                    deque.addLast(a0TreeNode.right);
                 }
                 ans.add(mid);
             }
@@ -93,13 +93,13 @@ public class 树的遍历 {
             List<Integer> mid = new LinkedList<>();
             int size = deque.size();
             for (int i = 0; i < size; i++) {
-                TreeNode treeNode = deque.pollFirst();
-                mid.add(treeNode.val);
-                if (treeNode.left != null) {
-                    deque.addLast(treeNode.left);
+                TreeNode a0TreeNode = deque.pollFirst();
+                mid.add(a0TreeNode.val);
+                if (a0TreeNode.left != null) {
+                    deque.addLast(a0TreeNode.left);
                 }
-                if (treeNode.right != null) {
-                    deque.addLast(treeNode.right);
+                if (a0TreeNode.right != null) {
+                    deque.addLast(a0TreeNode.right);
                 }
                 ans.add(0, mid);
             }

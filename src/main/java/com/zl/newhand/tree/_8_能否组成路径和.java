@@ -3,7 +3,7 @@ package com.zl.newhand.tree;
 /**
  *
  */
-public class 能否组成路径和 {
+public class _8_能否组成路径和 {
 
     // ===============【题目】能否组成路径和=====================
     // https://leetcode.cn/problems/path-sum/description/
