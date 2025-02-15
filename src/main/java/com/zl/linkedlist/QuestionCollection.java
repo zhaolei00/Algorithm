@@ -8,20 +8,6 @@ import com.zl.linkedlist.interfaces.Stack;
  */
 public class QuestionCollection {
 
-    public static void main(String[] args) {
-        StackByQueue stack = new StackByQueue();
-        stack.push(1);
-        stack.push(7);
-        stack.push(9);
-        stack.push(5);
-        stack.push(3);
-        stack.push(8);
-        int size = stack.size();
-        for (int i = 0; i < size; i++) {
-            System.out.println(stack.poll());
-        }
-    }
-
     //===============【题目1】设计一个特殊栈，获取栈中最小值时时间复杂度为o(1)=====================
     private static class MinStack {
 
@@ -95,60 +81,6 @@ public class QuestionCollection {
             while (!originalStack.isEmpty()) {
                 targetStack.push(originalStack.poll());
             }
-        }
-    }
-
-    //===============【题目3】如何用普通队列结构实现栈结构=====================
-    // 思路: 两个队列 data队列 help队列 在取数据时，help队列用于数据转化，data和help交换
-    private static class StackByQueue implements Stack<Integer> {
-
-        private Queue<Integer> dataQueue = new _4_链表实现队列.MyQueue();
-        private Queue<Integer> helpQueue = new _4_链表实现队列.MyQueue();
-
-        @Override
-        public boolean isEmpty() {
-            return dataQueue.isEmpty();
-        }
-
-        @Override
-        public int size() {
-            return dataQueue.size();
-        }
-
-        @Override
-        public void push(Integer val) {
-            dataQueue.offer(val);
-        }
-
-        @Override
-        public Integer poll() {
-            if (isEmpty()) {
-                throw new IllegalArgumentException();
-            }
-            return transformQueue(false);
-        }
-
-        @Override
-        public Integer peek() {
-            if (isEmpty()) {
-                throw new IllegalArgumentException();
-            }
-            return transformQueue(true);
-        }
-
-        public Integer transformQueue(boolean isPeek) {
-            int size = dataQueue.size();
-            for (int i = 0; i < size - 1; i++) {
-                helpQueue.offer(dataQueue.poll());
-            }
-            Integer value = dataQueue.poll();
-            if (isPeek) {
-                helpQueue.offer(value);
-            }
-            Queue<Integer> temp = dataQueue;
-            dataQueue = helpQueue;
-            helpQueue = temp;
-            return value;
         }
     }
 
