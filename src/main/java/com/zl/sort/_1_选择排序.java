@@ -22,7 +22,7 @@ public class _1_选择排序 {
         }
         int N = arr.length;
         int mixIdx;
-        for (int i = 0; i < N; i++) {
+        for (int i = 0; i < N - 1; i++) {
             mixIdx = i;
             for (int j = i + 1; j < N; j++) {
                 if (arr[j] < arr[mixIdx]) {
