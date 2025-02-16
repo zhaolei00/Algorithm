@@ -1,10 +1,67 @@
 package com.zl.sort;
 
+import com.zl.tiku._99_对数器;
+
 import java.util.Arrays;
 
 /**
  */
 public class _3_插入排序 {
+
+    /**
+     * 0 ~ 0 有序
+     * 0 ～ 1 有序
+     * 0 ～ N-1 有序
+     * 时间复杂度: o(N^2)
+     * 额外空间复杂度: o(1) 只有N、i、j 额外变量
+     */
+    public static void insertSort2(int[] arr) {
+        if (arr == null || arr.length < 2) {
+            return;
+        }
+        int N = arr.length;
+        for (int i = 1; i < N; i++) {
+            for (int j = i; j > 0; j--) {
+                if (arr[j] < arr[j - 1]) {
+                    swap2(arr, j, j - 1);
+                } else {
+                    break;
+                }
+            }
+        }
+    }
+
+    private static void swap2(int[] arr, int i, int j) {
+        arr[i] = arr[i] ^ arr[j];
+        arr[j] = arr[i] ^ arr[j];
+        arr[i] = arr[i] ^ arr[j];
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     /**
      * 思路: (前缀依次有序)
@@ -38,9 +95,12 @@ public class _3_插入排序 {
 
     public static void main(String[] args) {
         int[] arr = new int[]{6, 8, 1, 4, 6, 2, 9, 3, 0};
+        int[] arr2 = _99_对数器.copyArray(arr);
         System.out.println(Arrays.toString(arr));
         insertSort(arr);
+        insertSort2(arr2);
         System.out.println(Arrays.toString(arr));
+        System.out.println(Arrays.toString(arr2));
     }
 
 }
