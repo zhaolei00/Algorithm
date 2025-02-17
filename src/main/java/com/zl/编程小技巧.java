@@ -1,9 +1,6 @@
 package com.zl;
 
 /**
- * @Author zl
- * @Date 2025/2/17 17:06
- * @Description
  */
 public class 编程小技巧 {
 
@@ -24,6 +21,14 @@ public class 编程小技巧 {
      */
     public static int getMid(int l, int r) {
         return l + ((r - l) >> 1);
+    }
+
+    /**
+     * 获取最右侧的1
+     */
+    public static int getRightOne(int a) {
+        // return a & (~a + 1);
+        return a & -a;
     }
 
 }
