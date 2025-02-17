@@ -129,6 +129,86 @@ public class _4_3_数组实现队列 {
 
     }
 
+    public static class MyQueue1 implements Queue<Integer> {
+
+        private Integer[] data;
+
+        public MyQueue1(int size) {
+            data = new Integer[size];
+        }
+
+        @Override
+        public boolean isEmpty() {
+            return false;
+        }
+
+        @Override
+        public int size() {
+            return 0;
+        }
+
+        @Override
+        public void offer(Integer integer) {
+
+        }
+
+        @Override
+        public Integer poll() {
+            return null;
+        }
+
+        @Override
+        public Integer peek() {
+            return null;
+        }
+    }
+
+    public static class MyDeque1 implements Deque<Integer> {
+
+        private Integer[] data;
+
+        public MyDeque1(int size) {
+            data = new Integer[size];
+        }
+
+        @Override
+        public boolean isEmpty() {
+            return false;
+        }
+
+        @Override
+        public int size() {
+            return 0;
+        }
+
+        @Override
+        public void firstOffer(Integer integer) {
+
+        }
+
+        @Override
+        public void lastOffer(Integer integer) {
+
+        }
+
+        @Override
+        public Integer firstPoll() {
+            return null;
+        }
+
+        @Override
+        public Integer lastPoll() {
+            return null;
+        }
+    }
+
+
+
+
+
+
+
+
     public static void main(String[] args) {
         Deque<Integer> deque = new MyDeque(10);
         deque.lastOffer(1);
