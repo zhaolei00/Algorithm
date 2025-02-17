@@ -10,18 +10,20 @@ import java.util.List;
  */
 public class _1_链表反转 {
 
-    //===============【题目】给定单向链表Head, 进行反转=====================
-    // head节点: 等待反转处理的节点。
-    // pre节点: 等待反转处理的节点的前一个节点。因为单链表，在处理head反转时，需要知道，head反转后next需要指向谁。
-    // next节点: 等待反转处理的下一个节点。因为单链表，在处理完head的反转后，找不到后面节点了，所以需要记录。这个是临时变量，可以把申请变量挪到while里，是一样的。
-    public static ListNode singleLinkedReverse(ListNode head) {
-        ListNode pre = null; // 头节点时，前面节点是null。
-        ListNode next;
+    /**
+     * 反转单链表
+     * head节点: 等待反转处理的节点。
+     * pre节点: 等待反转处理的节点的前一个节点。因为单链表，在处理head反转时，需要知道，head反转后next需要指向谁。
+     * next节点: 等待反转处理的下一个节点。因为单链表，在处理完head的反转后，找不到后面节点了，所以需要记录。这个是临时变量，可以把申请变量挪到while里，是一样的。
+     */
+    public static ListNode question1(ListNode head) {
+        ListNode pre = null;
+        ListNode temp;
         while (head != null) {
-            next = head.next;
+            temp = head.next;
             head.next = pre;
             pre = head;
-            head = next;
+            head = temp;
         }
         return pre;
     }
@@ -39,7 +41,7 @@ public class _1_链表反转 {
                 oldListNodeList.add(oldHeadTemp);
                 oldHeadTemp = oldHeadTemp.next;
             }
-            ListNode newHead = singleLinkedReverse(oldHead);
+            ListNode newHead = question1(oldHead);
             if (!checkSingleLinkedReverse(oldListNodeList, newHead)) {
                 System.out.println("反转单链表有问题:");
                 _99_对数器.printSingleLinked(newHead);
@@ -59,36 +61,58 @@ public class _1_链表反转 {
         return oldListNodeList.equals(newListNodeList);
     }
 
-    //===============【题目】给定双向链表Head, 进行反转=====================
-    public static ListNode doubleLinkedReverse(ListNode head) {
+    /**
+     * 反转双链表
+     */
+    public static ListNode question2(ListNode head) {
         ListNode pre = null;
-        ListNode next;
+        ListNode temp;
         while (head != null) {
-            next = head.next;
-            head.pre = next;
+            temp = head.next;
             head.next = pre;
+            head.pre = temp;
             pre = head;
-            head = next;
+            head = temp;
         }
         return pre;
     }
 
     private static void testDoubleLinkedReverse() {
         System.out.println("测试开始");
-        int maxLength = 10;
-        int maxValue = 100;
-        int times = 10;
+        int maxLength = 100;
+        int maxValue = 1000;
+        int times = 1000000;
         for (int i = 0; i < times; i++) {
             ListNode oldHead = _99_对数器.randomGenDoubleLinkedList(maxLength, maxValue);
-            _99_对数器.printSingleLinked(oldHead);
-            ListNode newHead = doubleLinkedReverse(oldHead);
-            _99_对数器.printSingleLinked(newHead);
+            ListNode temp = oldHead;
+            List<Integer> oldList = new ArrayList<>();
+            while (temp != null) {
+                oldList.add(temp.val);
+                temp = temp.next;
+            }
+            ListNode newHead = question2(oldHead);
+            if (!checkDoubleLinkedReverse(oldList, newHead)) {
+                System.out.println("fail!");
+            }
         }
         System.out.println("Nice");
     }
 
+    private static boolean checkDoubleLinkedReverse(List<Integer> oldList, ListNode newHead) {
+        Collections.reverse(oldList);
+        int index = 0;
+        while (newHead != null) {
+            if (newHead.val != oldList.get(index)) {
+                return false;
+            }
+            newHead = newHead.next;
+            index++;
+        }
+        return true;
+    }
+
     public static void main(String[] args) {
-        // testSingleLinkedReverse();
+        testSingleLinkedReverse();
         testDoubleLinkedReverse();
     }
 
