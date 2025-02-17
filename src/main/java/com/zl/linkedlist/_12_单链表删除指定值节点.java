@@ -7,27 +7,52 @@ import com.zl.tiku._99_对数器;
 public class _12_单链表删除指定值节点 {
 
     //===============【题目】给定单向链表Head, 删除所有值为t的节点，返回头节点=====================
-    public static ListNode delTNode(ListNode root, int t) {
-        if (root == null) {
-            return null;
-        }
-        ListNode pre = null;
+
+    /**
+     *【题目】给定单向链表Head, 删除所有值为t的节点，返回头节点
+     * 方式一
+     */
+    public static ListNode question1(ListNode head, int t) {
         ListNode ans = null;
-        while (root != null) {
-            // 说明前面有非t值的节点
-            if (root.val == t) {
+        ListNode pre = null;
+        while (head != null) {
+            if (head.val == t) {
                 if (pre != null) {
-                    pre.next = root.next;
+                    pre.next = head.next; // 删节点
                 }
             } else {
-                pre = root;
+                pre = head;
                 if (ans == null) {
-                    ans = root;
+                    ans = pre;
                 }
             }
-            root = root.next;
+            head = head.next;
         }
         return ans;
+    }
+
+    /**
+     *【题目】给定单向链表Head, 删除所有值为t的节点，返回头节点
+     * 方式二
+     */
+    public static ListNode question2(ListNode head, int t) {
+        while (head != null) {
+            if (head.val != t) {
+                break;
+            }
+            head = head.next;
+        }
+        ListNode pre = head;
+        ListNode cur = head;
+        while (cur != null) {
+            if (cur.val == t) {
+                pre.next = cur.next;
+            } else {
+                pre = cur;
+            }
+            cur = cur.next;
+        }
+        return head;
     }
 
     public static void main(String[] args) {
@@ -38,7 +63,7 @@ public class _12_单链表删除指定值节点 {
         head.next = node1;
         node1.next = node2;
         node2.next = node3;
-        ListNode ans = delTNode(head, 5);
+        ListNode ans = question2(head, 5);
         _99_对数器.printSingleLinked(ans);
     }
 
