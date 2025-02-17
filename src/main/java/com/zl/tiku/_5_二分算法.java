@@ -12,23 +12,25 @@ import java.util.List;
  */
 public class _5_二分算法 {
 
-    //===============【题目】给定arr数组(升序且不重复)，找到num的位置=====================
+    /**
+     *【题目】给定arr数组(升序且不重复)，找到num的位置
+     * 时间复杂度: o(logN)
+     * 额外空间复杂度: o(1) 只有L、R、mid变量
+     */
     public static int question1(int[] arr, int num) {
         if (arr == null || arr.length == 0) {
             return -1;
         }
-        int n = arr.length;
         int L = 0;
-        int R = n - 1;
+        int R = arr.length - 1;
         while (L <= R) {
-            int mid = (L + R) / 2;
+            int mid = L + ((R - L) >> 1);
             if (arr[mid] == num) {
                 return mid;
-            }
-            if (arr[mid] > num) {
-                R = mid - 1;
-            } else {
+            } else if (arr[mid] < num) {
                 L = mid + 1;
+            } else {
+                R = mid - 1;
             }
         }
         return -1;
@@ -70,7 +72,11 @@ public class _5_二分算法 {
         return false;
     }
 
-    //===============【题目】给定arr数组(升序，可能重复)，找到最左面>=num的位置=====================
+    /**
+     *【题目】给定arr数组(升序，可能重复)，找到最左面>=num的位置
+     * 时间复杂度: o(logN)
+     * 额外空间复杂度: o(1) L、R 有限几个变量
+     */
     public static int question2(int[] arr, int num) {
         if (arr == null || arr.length == 0) {
             return -1;
@@ -79,10 +85,10 @@ public class _5_二分算法 {
         int R = arr.length - 1;
         int ans = -1;
         while (L <= R) {
-            int mid = (L + R) / 2;
+            int mid = L + ((R - L) >> 1);
             if (arr[mid] >= num) {
-                ans = mid;
                 R = mid - 1;
+                ans = mid;
             } else {
                 L = mid + 1;
             }
@@ -119,7 +125,11 @@ public class _5_二分算法 {
         return targetIndex == -1;
     }
 
-    //===============【题目】给定arr数组(升序，可能重复)，找到最右面<=num的位置=====================
+    /**
+     *【题目】给定arr数组(升序，可能重复)，找到最右面<=num的位置
+     * 时间复杂度: o(logN)
+     * 额外空间复杂度: o(1)
+     */
     public static int question3(int[] arr, int num) {
         if (arr == null || arr.length == 0) {
             return -1;
@@ -128,7 +138,7 @@ public class _5_二分算法 {
         int R = arr.length - 1;
         int ans = -1;
         while (L <= R) {
-            int mid = (L + R) / 2;
+            int mid = L + ((R - L) >> 1);
             if (arr[mid] <= num) {
                 ans = mid;
                 L = mid + 1;
@@ -148,7 +158,7 @@ public class _5_二分算法 {
             int[] arr = _99_对数器.randomGenIntArray(maxLength, maxValue);
             int num = _4_随机数概率问题.equalProbability5(maxValue);
             _1_选择排序.selectSort(arr);
-            if (!checkQuestion2(arr, question2(arr, num), num)) {
+            if (!checkQuestion3(arr, question3(arr, num), num)) {
                 System.out.println("fail 算法有问题: num:" + num + ", " + Arrays.toString(arr));
                 break;
             }
@@ -168,61 +178,45 @@ public class _5_二分算法 {
         return targetIndex == -1;
     }
 
-    //====局部最小定义: 数组为null或者只有一个数组，局部最小为-1。
-    //                [0]<[1] 0位置是局部最小, [n-2]>[n-1] n-1位置局部最小, [i-1]>[i]<[i+1] i位置局部最小===
-
-    //===============【题目】给定arr数组(无序，相邻两个位置不等), 找到任意一个局部最小位置=====================
+    /**
+     * 局部最小定义: 数组为null或者只有一个数的数组组，局部最小为-1。[0]<[1] 0位置是局部最小, [n-2]>[n-1] n-1位置局部最小, [i-1]>[i]<[i+1] i位置局部最小。
+     */
+    /**
+     *【题目】给定arr数组(无序，相邻两个位置不等), 找到任意一个局部最小位置
+     * 时间复杂度: o(logN)
+     * 额外空间复杂度: o(1) 只有N、L、R有限几个变量
+     */
     public static int question4(int[] arr) {
         if (arr == null || arr.length < 2) {
             return -1;
         }
-        int n = arr.length;
         if (arr[0] < arr[1]) {
             return 0;
         }
-        if (arr[n - 2] > arr[n - 1]) {
-            return n - 1;
+        int N = arr.length;
+        if (arr[N - 1] < arr[N - 2]) {
+            return N - 1;
         }
-        // 方式1: 因为上面已经判断了0和n-1位置是否局部最小, 0~n-1会存在超边界问题。例如W例子(54545),所以条件为L < R - 1。
-        // int L = 0;
-        // int R = n - 1;
-        // while (L < R - 1) {
-        //     int mid = (L + R) / 2;
-        //     if (arr[mid] < arr[mid - 1] && arr[mid] < arr[mid + 1]) {
-        //         return mid;
-        //     }
-        //     if (arr[mid] < arr[mid - 1]) {
-        //         L = mid + 1;
-        //     } else {
-        //         R = mid - 1;
-        //     }
-        // }
-        // return arr[L] < arr[R] ? L : R;
-
-        // 方式2: 因为上面已经判断了0和n-1位置是否局部最小,所以范围可以缩小到1~n-2
         int L = 1;
-        int R = n - 2;
-        int ans = -1;
+        int R = N - 2;
         while (L <= R) {
-            int mid = (L + R) / 2;
+            int mid = L + ((R - L) >> 1);
             if (arr[mid] < arr[mid - 1] && arr[mid] < arr[mid + 1]) {
-                ans = mid;
-                break;
-            }
-            if (arr[mid] < arr[mid - 1]) {
-                L = mid + 1;
-            } else {
+                return mid;
+            } else if (arr[mid] > arr[mid - 1]) {
                 R = mid - 1;
+            } else {
+                L = mid + 1;
             }
         }
-        return ans;
+        return -1;
     }
 
     private static void testQuestion4() {
         System.out.println("测试开始");
         int maxLength = 100;
         int maxValue = 20000;
-        int times = 1000000;
+        int times = 10000000;
         for (int i = 0; i < times; i++) {
             int[] arr = _99_对数器.randomGenNotEqualArray(maxLength, maxValue);
             if (!checkQuestion4(arr, question4(arr))) {
@@ -275,9 +269,9 @@ public class _5_二分算法 {
     }
 
     public static void main(String[] args) {
-        testQuestion1();
-        testQuestion2();
-        testQuestion3();
+        // testQuestion1();
+        // testQuestion2();
+        // testQuestion3();
         testQuestion4();
     }
 
