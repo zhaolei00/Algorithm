@@ -47,4 +47,31 @@ public class _4_4_数组实现栈 {
         }
     }
 
+    public static class MyStack1 implements Stack<Integer> {
+        @Override
+        public boolean isEmpty() {
+            return false;
+        }
+
+        @Override
+        public int size() {
+            return 0;
+        }
+
+        @Override
+        public void push(Integer integer) {
+
+        }
+
+        @Override
+        public Integer poll() {
+            return null;
+        }
+
+        @Override
+        public Integer peek() {
+            return null;
+        }
+    }
+
 }
