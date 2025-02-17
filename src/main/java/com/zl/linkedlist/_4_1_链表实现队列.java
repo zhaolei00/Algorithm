@@ -6,7 +6,7 @@ import com.zl.linkedlist.interfaces.Queue;
 /**
  *
  */
-public class _4_链表实现队列 {
+public class _4_1_链表实现队列 {
 
     // =========== 单链表实现队列 ===========
     // 功能: 增、取、看

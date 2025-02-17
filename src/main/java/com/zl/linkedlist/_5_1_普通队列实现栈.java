@@ -4,13 +4,13 @@ import com.zl.linkedlist.interfaces.Stack;
 
 /**
  */
-public class _10_普通队列实现栈 {
+public class _5_1_普通队列实现栈 {
 
     public static class MyStack implements Stack<Integer> {
 
-        private _4_链表实现队列.MyQueue data = new _4_链表实现队列.MyQueue();
+        private _4_1_链表实现队列.MyQueue data = new _4_1_链表实现队列.MyQueue();
 
-        private _4_链表实现队列.MyQueue help = new _4_链表实现队列.MyQueue();
+        private _4_1_链表实现队列.MyQueue help = new _4_1_链表实现队列.MyQueue();
 
         @Override
         public boolean isEmpty() {
@@ -37,7 +37,7 @@ public class _10_普通队列实现栈 {
                 help.offer(data.poll());
             }
             Integer ans = data.poll();
-            _4_链表实现队列.MyQueue temp = data;
+            _4_1_链表实现队列.MyQueue temp = data;
             data = help;
             help = temp;
             return ans;
@@ -55,7 +55,7 @@ public class _10_普通队列实现栈 {
                 ans = poll;
                 help.offer(poll);
             }
-            _4_链表实现队列.MyQueue temp = data;
+            _4_1_链表实现队列.MyQueue temp = data;
             data = help;
             help = temp;
             return ans;

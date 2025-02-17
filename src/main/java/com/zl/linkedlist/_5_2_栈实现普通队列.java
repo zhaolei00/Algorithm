@@ -4,13 +4,13 @@ import com.zl.linkedlist.interfaces.Queue;
 
 /**
  */
-public class _11_栈实现普通队列 {
+public class _5_2_栈实现普通队列 {
 
     public static class MyQueue implements Queue<Integer> {
 
-        private _5_单链表实现栈.MyStack data = new _5_单链表实现栈.MyStack();
+        private _4_2_单链表实现栈.MyStack data = new _4_2_单链表实现栈.MyStack();
 
-        private _5_单链表实现栈.MyStack help = new _5_单链表实现栈.MyStack();
+        private _4_2_单链表实现栈.MyStack help = new _4_2_单链表实现栈.MyStack();
 
         @Override
         public boolean isEmpty() {

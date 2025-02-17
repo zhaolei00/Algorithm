@@ -3,17 +3,17 @@ package com.zl.linkedlist;
 import com.zl.linkedlist.interfaces.Stack;
 
 /**
- *
  */
-public class _5_单链表实现栈 {
+public class _4_4_数组实现栈 {
 
-    // =========== 单链表实现栈(头插法) ===========
-    // 功能: 入栈、出栈
     public static class MyStack implements Stack<Integer> {
 
-        private ListNode head;
-
+        private int[] data;
         private int size;
+
+        public MyStack(int size) {
+            this.data = new int[size];
+        }
 
         @Override
         public boolean isEmpty() {
@@ -27,29 +27,23 @@ public class _5_单链表实现栈 {
 
         @Override
         public void push(Integer val) {
-            ListNode cur = new ListNode(val);
-            cur.next = head;
-            head = cur;
-            size++;
+            data[size++] = val;
         }
 
         @Override
         public Integer poll() {
-            if (head == null) {
+            if (isEmpty()) {
                 return null;
             }
-            Integer ans = head.val;
-            head = head.next;
-            size--;
-            return ans;
+            return data[--size];
         }
 
         @Override
         public Integer peek() {
-            if (head == null) {
+            if (isEmpty()) {
                 return null;
             }
-            return head.val;
+            return data[size - 1];
         }
     }
 

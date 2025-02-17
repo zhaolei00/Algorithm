@@ -5,7 +5,7 @@ import com.zl.linkedlist.interfaces.Queue;
 
 /**
  */
-public class _8_数组实现队列 {
+public class _4_3_数组实现队列 {
 
     public static class MyQueue implements Queue<Integer> {
 
