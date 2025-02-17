@@ -16,7 +16,6 @@ import java.util.List;
  */
 public class _99_对数器 {
 
-    // TODO 需要补充各种工具。例如: 生成随机长度和随机大小的数组。等等。
     public static void main(String[] args) {
         int times = 10;
         int maxLength = 10;
