@@ -14,7 +14,7 @@ public class _2_冒泡排序 {
      * 0 ~ N-1 中 0 1、1 2、2 3、。。。N-3 N-2不断进行比较，如果大于，就交换。
      * 就像鱼冒泡泡一样，最大值不断往最右侧送。
      * 时间复杂度: o(N^2)
-     * 额外空间负责度: o(1) 只有N、i、j、j-1属于额外变量
+     * 额外空间负责度: o(1) 只有N、i、j属于额外变量
      */
     public static void bubbleSort2(int[] arr) {
         if (arr == null || arr.length < 2) {
