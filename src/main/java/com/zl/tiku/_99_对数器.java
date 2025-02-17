@@ -16,16 +16,6 @@ import java.util.List;
  */
 public class _99_对数器 {
 
-    public static void main(String[] args) {
-        int times = 10;
-        int maxLength = 10;
-        int maxValue = 100;
-        for (int i = 0; i < times; i++) {
-            ListNode head = randomGenLinkedList(maxLength, maxValue);
-            printSingleLinked(head);
-        }
-    }
-
     public static int[] randomGenIntArray(int maxLength, int maxValue) {
         if (_4_随机数概率问题.equalProbability1() <= 0.1) {
             return null;
