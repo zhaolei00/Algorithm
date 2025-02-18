@@ -8,11 +8,12 @@ public class _4_4_数组实现栈 {
 
     public static class MyStack implements Stack<Integer> {
 
-        private int[] data;
+        private final Integer[] data;
+
         private int size;
 
         public MyStack(int size) {
-            this.data = new int[size];
+            this.data = new Integer[size];
         }
 
         @Override
@@ -27,6 +28,9 @@ public class _4_4_数组实现栈 {
 
         @Override
         public void push(Integer val) {
+            if (size == data.length) {
+                throw new IllegalArgumentException();
+            }
             data[size++] = val;
         }
 
@@ -35,7 +39,9 @@ public class _4_4_数组实现栈 {
             if (isEmpty()) {
                 return null;
             }
-            return data[--size];
+            Integer ans = data[--size];
+            data[size] = null; // 防止内存泄漏
+            return ans;
         }
 
         @Override
@@ -44,33 +50,6 @@ public class _4_4_数组实现栈 {
                 return null;
             }
             return data[size - 1];
-        }
-    }
-
-    public static class MyStack1 implements Stack<Integer> {
-        @Override
-        public boolean isEmpty() {
-            return false;
-        }
-
-        @Override
-        public int size() {
-            return 0;
-        }
-
-        @Override
-        public void push(Integer integer) {
-
-        }
-
-        @Override
-        public Integer poll() {
-            return null;
-        }
-
-        @Override
-        public Integer peek() {
-            return null;
         }
     }
 
