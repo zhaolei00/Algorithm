@@ -44,7 +44,7 @@ public class _4_2_用归并排序解决的问题 {
         int index = 0;
         int smallSum = 0;
         while (p1 <= M && p2 <= R) {
-            if (arr[p1] < arr[p2]) {
+            if (arr[p1] < arr[p2]) { // arr[p1] == arr[p2] 时, 取p2。因为此时不知道右面有多少个比arr[p1]大
                 smallSum += (R - p2 + 1) * arr[p1];
                 help[index++] = arr[p1++];
             } else {
