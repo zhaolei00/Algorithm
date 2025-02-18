@@ -11,9 +11,9 @@ public class _4_3_数组实现队列 {
 
         private Integer[] data;
 
-        private int head;
+        private int head; // 头位置(可取)
 
-        private int tail;
+        private int tail; // 尾位置(可取)
 
         private int size;
 
