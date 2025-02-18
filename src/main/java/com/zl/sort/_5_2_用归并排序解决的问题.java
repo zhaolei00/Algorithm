@@ -1,8 +1,8 @@
-package com.zl;
+package com.zl.sort;
 
 /**
  */
-public class 用归并排序解决的问题 {
+public class _5_2_用归并排序解决的问题 {
 
     public static void main(String[] args) {
 //        int[] arr = {1, 9, 3, 4, 6, 3, 1, 2}; // 5 + 1 + 1 + 2 + 1
