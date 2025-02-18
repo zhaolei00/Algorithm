@@ -8,9 +8,8 @@ public class _4_2_用归并排序解决的问题 {
 
     public static void main(String[] args) {
        int[] arr = {1, 9, 3, 4, 6, 3, 1, 2}; // 5 + 1 + 1 + 2 + 1
-        // int[] arr = {1, 9, 5, 2};
+       //  int[] arr = {1, 9, 5, 2};
         int[] arr1 = _99_对数器.copyArray(arr);
-//        System.out.println(ReverseOrderPairQuestion.reverseOrderPair(arr));
         // System.out.println(BiggerThanRightTwiceQuestion.biggerThanRightTwice(arr));
 
     }
@@ -63,63 +62,49 @@ public class _4_2_用归并排序解决的问题 {
         return smallSum;
     }
 
-    //===============【题目2】逆序对问题 给定一个arr数组，每个位置右边比他小的数的个数相加，得出逆序对数量===========
-    private static class ReverseOrderPairQuestion {
-
-        private static int reverseOrderPair(int[] arr) {
-            if (arr == null || arr.length < 2) {
-                return 0;
-            }
-            return mergeSort2(arr);
+    /**
+     *【题目2】逆序对问题 给定一个arr数组，每个位置右边比他小的数的个数相加，得出逆序对数量
+     * 时间复杂度: o(N*logN)
+     */
+    public static int question2(int[] arr) {
+        if (arr == null || arr.length < 2) {
+            return 0;
         }
+        return process2(arr, 0, arr.length - 1, new int[arr.length]);
+    }
 
-        private static int mergeSort2(int[] arr) {
-            if (arr == null || arr.length < 2) {
-                return 0;
-            }
-            int pair = 0;
-            int N = arr.length;
-            int step = 1;
-            while (step < N) {
-                int L = 0;
-                while (L < N) {
-                    if (step >= N - L) {
-                        break;
-                    }
-                    int mid = L + step - 1;
-                    int R = Math.min(mid + step, N - 1);
-                    pair += merge(arr, L, mid, R);
-                    L = R + 1;
-                }
-                if (step > N / 2) {
-                    break;
-                }
-                step <<= 1;
-            }
-            return pair;
+    // 获取数组arr在[L,R]上的逆序对数量
+    private static int process2(int[] arr, int L, int R, int[] help) {
+        if (L >= R) {
+            return 0;
         }
+        int mid = L + ((R - L) >> 1);
+        return process2(arr, L, mid, help) + process2(arr, mid + 1, R, help) + merge2(arr, L, mid, R, help);
+    }
 
-        private static int merge(int[] arr, int l, int m, int r) {
-            int pair = 0;
-            int[] help = new int[r - l + 1];
-            int index = help.length - 1;
-            int p1 = m;
-            int p2 = r;
-            while (p1 >= l && p2 >= m + 1) {
-                pair += arr[p1] > arr[p2] ? p2 - m : 0;
-                help[index--] = arr[p1] > arr[p2] ? arr[p1--] : arr[p2--];
+    private static int merge2(int[] arr, int L, int M, int R, int[] help) {
+        int p1 = L;
+        int p2 = M + 1;
+        int index = 0;
+        int ans = 0;
+        while (p1 <= M && p2 <= R) {
+            if (arr[p1] <= arr[p2]) {
+                help[index++] = arr[p1++];
+            } else {
+                ans += (M - p1 + 1);
+                help[index++] = arr[p2++];
             }
-            while (p1 >= l) {
-                help[index--] = arr[p1--];
-            }
-            while (p2 >= m + 1) {
-                help[index--] = arr[p2--];
-            }
-            for (int i = 0; i < help.length; i++) {
-                arr[l + i] = help[i];
-            }
-            return pair;
         }
+        while (p1 <= M) {
+            help[index++] = arr[p1++];
+        }
+        while (p2 <= R) {
+            help[index++] = arr[p2++];
+        }
+        for (int i = 0; i < R - L + 1; i++) {
+            arr[L + i] = help[i];
+        }
+        return ans;
     }
 
     //===============【题目2】给定一个arr数组，每个位置右边乘2比他小的数的个数相加，得出这个数量===========
