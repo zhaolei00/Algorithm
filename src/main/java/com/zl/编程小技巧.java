@@ -31,4 +31,20 @@ public class 编程小技巧 {
         return a & -a;
     }
 
+    /**
+     * 取余
+     * 思路: 做除法, 剩下的数就是余数。
+     */
+    private static int quYu(int a, int b) {
+        int a1 = a < 0 ? ~a + 1 : a;
+        int b1 = b < 0 ? ~b + 1 : b;
+        for (int i = 30; i >= 0; i--) {
+            int temp = a1 >> i;
+            if (temp >= b1) {
+                a1 -= b1 << i;
+            }
+        }
+        return a < 0 ^ b < 0 ? -a1 : a1;
+    }
+
 }

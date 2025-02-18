@@ -9,16 +9,16 @@ public class _4_3_数组实现队列 {
 
     public static class MyQueue implements Queue<Integer> {
 
-        private int[] data;
+        private Integer[] data;
+
+        private int head;
+
+        private int tail;
 
         private int size;
 
-        private int left;
-
-        private int right;
-
         public MyQueue(int size) {
-            this.data = new int[size];
+            data = new Integer[size];
         }
 
         @Override
@@ -33,46 +33,47 @@ public class _4_3_数组实现队列 {
 
         @Override
         public void offer(Integer val) {
-            if (size == data.length) {
-                throw new IllegalArgumentException("超过数组长度");
+            if (size() == data.length) {
+                throw new IllegalArgumentException();
             }
-            data[right++] = val;
-            right %= data.length;
+            data[tail++] = val;
+            if (tail == data.length) {
+                tail = 0;
+            }
             size++;
         }
 
         @Override
         public Integer poll() {
             if (isEmpty()) {
-                return null;
+                throw new IllegalArgumentException();
             }
-            Integer ans = data[left++];
-            left %= data.length;
+            Integer ans = data[head++];
+            if (head == data.length) {
+                head = 0;
+            }
             size--;
             return ans;
         }
 
         @Override
         public Integer peek() {
-            if (isEmpty()) {
-                return null;
-            }
-            return data[left];
+            return data[head];
         }
     }
 
     public static class MyDeque implements Deque<Integer> {
 
-        private int[] data;
+        private Integer[] data;
 
-        private int left = 0;
+        private int head = 0; // 可以插入的下标
 
-        private int right = 1;
+        private int tail = 1; // 可以插入的下标
 
         private int size;
 
         public MyDeque(int size) {
-            this.data = new int[size];
+            data = new Integer[size];
         }
 
         @Override
@@ -90,8 +91,10 @@ public class _4_3_数组实现队列 {
             if (size == data.length) {
                 throw new IllegalArgumentException();
             }
-            data[left] = val;
-            left = left == 0 ? data.length - 1: left - 1;
+            data[head--] = val;
+            if (head == -1) {
+                head = data.length - 1;
+            }
             size++;
         }
 
@@ -100,125 +103,38 @@ public class _4_3_数组实现队列 {
             if (size == data.length) {
                 throw new IllegalArgumentException();
             }
-            data[right] = val;
-            right = right == data.length - 1 ? 0 : right + 1;
+            data[tail++] = val;
+            if (tail == data.length) {
+                tail = 0;
+            }
             size++;
         }
 
         @Override
         public Integer firstPoll() {
-            if (size == 0) {
+            if (isEmpty()) {
                 throw new IllegalArgumentException();
             }
-            int index = left == data.length - 1 ? 0 : left + 1;
-            left = index;
+            head++;
+            if (head == data.length) {
+                head = 0;
+            }
             size--;
-            return data[index];
+            return data[head];
         }
 
         @Override
         public Integer lastPoll() {
-            if (size == 0) {
+            if (isEmpty()) {
                 throw new IllegalArgumentException();
             }
-            int index = right == 0 ? data.length - 1 : right - 1;
-            right = index;
+            tail--;
+            if (tail == -1) {
+                tail = data.length - 1;
+            }
             size--;
-            return data[index];
-        }
-
-    }
-
-    public static class MyQueue1 implements Queue<Integer> {
-
-        private Integer[] data;
-
-        public MyQueue1(int size) {
-            data = new Integer[size];
-        }
-
-        @Override
-        public boolean isEmpty() {
-            return false;
-        }
-
-        @Override
-        public int size() {
-            return 0;
-        }
-
-        @Override
-        public void offer(Integer integer) {
-
-        }
-
-        @Override
-        public Integer poll() {
-            return null;
-        }
-
-        @Override
-        public Integer peek() {
-            return null;
+            return data[tail];
         }
     }
 
-    public static class MyDeque1 implements Deque<Integer> {
-
-        private Integer[] data;
-
-        public MyDeque1(int size) {
-            data = new Integer[size];
-        }
-
-        @Override
-        public boolean isEmpty() {
-            return false;
-        }
-
-        @Override
-        public int size() {
-            return 0;
-        }
-
-        @Override
-        public void firstOffer(Integer integer) {
-
-        }
-
-        @Override
-        public void lastOffer(Integer integer) {
-
-        }
-
-        @Override
-        public Integer firstPoll() {
-            return null;
-        }
-
-        @Override
-        public Integer lastPoll() {
-            return null;
-        }
-    }
-
-
-
-
-
-
-
-
-    public static void main(String[] args) {
-        Deque<Integer> deque = new MyDeque(10);
-        deque.lastOffer(1);
-        deque.firstOffer(3);
-        deque.firstOffer(5);
-        deque.lastOffer(6);
-        deque.lastOffer(9);
-        int size1 = deque.size();
-        for (int i = 0; i < size1; i++) {
-            System.out.println(deque.firstPoll());
-        }
-    }
 }
