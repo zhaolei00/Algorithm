@@ -23,22 +23,22 @@ public class _4_2_用归并排序解决的问题 {
         if (arr == null || arr.length < 2) {
             return 0;
         }
-        return process(arr, 0, arr.length - 1, new int[arr.length]);
+        return process1(arr, 0, arr.length - 1, new int[arr.length]);
     }
 
     // 求数组arr在[L,R]范围上的小和
-    private static int process(int[] arr, int L, int R, int[] help) {
+    private static int process1(int[] arr, int L, int R, int[] help) {
         if (L >= R) {
             return 0;
         }
         int mid = L + ((R - L) >> 1);
-        int leftSmallNum = process(arr, L, mid, help);
-        int rightSmallNum = process(arr, mid + 1, R, help);
-        return leftSmallNum + rightSmallNum + merge(arr, L, mid, R, help);
+        int leftSmallNum = process1(arr, L, mid, help);
+        int rightSmallNum = process1(arr, mid + 1, R, help);
+        return leftSmallNum + rightSmallNum + merge1(arr, L, mid, R, help);
     }
 
     // 合并数组，并返回小和
-    private static int merge(int[] arr, int L, int M, int R, int[] help) {
+    private static int merge1(int[] arr, int L, int M, int R, int[] help) {
         int p1 = L;
         int p2 = M + 1;
         int index = 0;
