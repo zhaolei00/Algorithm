@@ -7,7 +7,7 @@ import java.util.Arrays;
 /**
  * 归并排序定义: 让左右都有序，最近进行合并。
  */
-public class _4_归并排序 {
+public class _4_1_归并排序 {
 
     //===============【题目】归并排序递归实现=====================
     public static void mergeSort1(int[] arr) {
