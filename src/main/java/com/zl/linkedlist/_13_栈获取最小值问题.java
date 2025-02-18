@@ -6,32 +6,33 @@ public class _13_栈获取最小值问题 {
 
     //===============【题目1】设计一个特殊栈，获取栈中最小值时时间复杂度为o(1)=====================
     public static class MinStack {
+
         private _4_2_单链表实现栈.MyStack data = new _4_2_单链表实现栈.MyStack();
-        private _4_2_单链表实现栈.MyStack minStack = new _4_2_单链表实现栈.MyStack();
+
+        private _4_2_单链表实现栈.MyStack help = new _4_2_单链表实现栈.MyStack();
 
         public void push(Integer val) {
             data.push(val);
-            if (minStack.isEmpty()) {
-                minStack.push(val);
+            if (help.isEmpty()) {
+                help.push(val);
             } else {
-                Integer peek = minStack.peek();
+                Integer peek = help.peek();
                 if (val < peek) {
-                    minStack.push(val);
+                    help.push(val);
                 } else {
-                    minStack.push(peek);
+                    help.push(peek);
                 }
             }
         }
 
         public Integer poll() {
-            minStack.poll();
+            help.poll();
             return data.poll();
         }
 
         public Integer getMin() {
-            return minStack.peek();
+            return help.peek();
         }
-
     }
 
 }
