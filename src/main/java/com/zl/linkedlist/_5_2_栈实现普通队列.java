@@ -8,57 +8,57 @@ public class _5_2_栈实现普通队列 {
 
     public static class MyQueue implements Queue<Integer> {
 
-        private _4_2_单链表实现栈.MyStack data = new _4_2_单链表实现栈.MyStack();
+        private _4_2_单链表实现栈.MyStack push = new _4_2_单链表实现栈.MyStack();
 
-        private _4_2_单链表实现栈.MyStack help = new _4_2_单链表实现栈.MyStack();
+        private _4_2_单链表实现栈.MyStack pop = new _4_2_单链表实现栈.MyStack();
 
         @Override
         public boolean isEmpty() {
-            return data.isEmpty();
+            return push.isEmpty() && pop.isEmpty();
         }
 
         @Override
         public int size() {
-            return data.size();
+            return push.size() + pop.size();
         }
 
         @Override
         public void offer(Integer val) {
-            data.push(val);
+            push.push(val);
         }
 
         @Override
         public Integer poll() {
-            if (isEmpty()) {
-                return null;
+            if (!pop.isEmpty()) {
+                return pop.poll();
             }
-            int size = data.size();
-            for (int i = 0; i < size - 1; i++) {
-                help.push(data.poll());
+            while (!push.isEmpty()) {
+                pop.push(push.poll());
             }
-            Integer ans = data.poll();
-            while (!help.isEmpty()) {
-                data.push(help.poll());
-            }
-            return ans;
+            return pop.poll();
         }
 
         @Override
         public Integer peek() {
-            if (isEmpty()) {
-                return null;
+            if (!pop.isEmpty()) {
+                return pop.peek();
             }
-            int size = data.size();
-            Integer ans = null;
-            for (int i = 0; i < size; i++) {
-                Integer poll = data.poll();
-                ans = poll;
-                help.push(poll);
+            while (!push.isEmpty()) {
+                pop.push(push.poll());
             }
-            while (!help.isEmpty()) {
-                data.push(help.poll());
-            }
-            return ans;
+            return pop.peek();
+        }
+    }
+
+    public static void main(String[] args) {
+        MyQueue myQueue = new MyQueue();
+        myQueue.offer(4);
+        myQueue.offer(9);
+        myQueue.offer(7);
+        myQueue.offer(3);
+        myQueue.offer(5);
+        while (!myQueue.isEmpty()) {
+            System.out.println(myQueue.poll());
         }
     }
 
