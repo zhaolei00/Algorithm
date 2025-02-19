@@ -151,4 +151,9 @@ public class _4_2_用归并排序解决的问题 {
         }
         return ans;
     }
+
+    /**
+     *【题目2】给定一个arr数组，有多少个子数组的和，在范围[lower,upper]内
+     * 时间复杂度: o(N*logN)
+     */
 }
