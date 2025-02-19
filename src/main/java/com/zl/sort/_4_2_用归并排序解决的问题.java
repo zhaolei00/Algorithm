@@ -152,8 +152,75 @@ public class _4_2_用归并排序解决的问题 {
         return ans;
     }
 
+    public static void main(String[] args) {
+        System.out.println(question4(new int[] {-2147483647,0,-2147483647,2147483647}, 0, 0));
+    }
     /**
      *【题目2】给定一个arr数组，有多少个子数组的累加和，在[lower,upper]范围内
      * 时间复杂度: o(N*logN)
+     * [-2147483647,0,-2147483647,2147483647] 如果前缀和数组用int[]那么会溢出，数会不对。
      */
+    public static int question4(int[] arr, int lower, int upper) {
+        if (arr == null || arr.length == 0) {
+            return 0;
+        }
+        long[] preSum = new long[arr.length];
+        preSum[0] = arr[0];
+        for (int i = 1; i < arr.length; i++) {
+            preSum[i] = preSum[i - 1] + arr[i];
+        }
+        return process4(preSum, 0, arr.length - 1, lower, upper);
+    }
+
+    // 获取 [L...R]范围上有多少个子数组累加和符合[lower...upper]
+    private static int process4(long[] preSum, int L, int R, int lower, int upper) {
+        if (L == R) {
+            if (preSum[L] >= lower && preSum[L] <= upper) {
+                return 1;
+            }
+            return 0;
+        }
+        int mid = L + ((R - L) >> 1);
+        int left = process4(preSum, L, mid, lower, upper);
+        int right = process4(preSum, mid + 1, R, lower, upper);
+        int merge = merge4(preSum, L, mid, R, lower, upper);
+        return left + right + merge;
+    }
+
+    // 合并过程中，以右边为终点的子数组，有多少个符合达标的。
+    private static int merge4(long[] preSum, int L, int mid, int R, int lower, int upper) {
+        int p1 = L;
+        int p2 = L;
+        int ans = 0;
+        for (int i = mid + 1; i <= R; i++) {
+            while (p1 <= mid && preSum[p1] < preSum[i] - upper) {
+                p1++;
+            }
+            while (p2 <= mid && preSum[p2] <= preSum[i] - lower) {
+                p2++;
+            }
+            ans += p2 - p1;
+        }
+        int p3 = L;
+        int p4 = mid + 1;
+        long[] help = new long[R - L + 1];
+        int index = 0;
+        while (p3 <= mid && p4 <= R) {
+            if (preSum[p3] <= preSum[p4]) {
+                help[index++] = preSum[p3++];
+            } else {
+                help[index++] = preSum[p4++];
+            }
+        }
+        while (p3 <= mid) {
+            help[index++] = preSum[p3++];
+        }
+        while (p4 <= R) {
+            help[index++] = preSum[p4++];
+        }
+        for (int i = 0; i < help.length; i++) {
+            preSum[L + i] = help[i];
+        }
+        return ans;
+    }
 }
