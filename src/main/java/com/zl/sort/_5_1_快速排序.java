@@ -11,8 +11,15 @@ import java.util.LinkedList;
  */
 public class _5_1_快速排序 {
 
-    //===============【题目】快速排序 递归实现=====================
-    // 在[L,R]中以, 以R为分界线，分为三个区间，小于区间、等于区间、大于区间
+    //====================================
+    //
+
+    /**
+     *【题目】快速排序 递归实现
+     * 时间复杂度: o(N*logN)
+     * 额外空间复杂度: o(logN)
+     * 思路： partition: 在[L,R]中以, 以R为分界线，分为三个区间，小于区间、等于区间、大于区间
+     */
     public static void quickSort(int[] arr) {
         if (arr == null || arr.length < 2) {
             return;
@@ -24,6 +31,8 @@ public class _5_1_快速排序 {
         if (L >= R) {
             return;
         }
+        // 随机进行交换
+        swap(arr, (int) (Math.random() * (R - L + 1)) + L, R);
         int[] pari = partition(arr, L, R);
         // pari[0] 小于区的数
         // pari[1] 大于区的数
@@ -54,8 +63,12 @@ public class _5_1_快速排序 {
         arr[j] = temp;
     }
 
-    //===============【题目】快速排序非递归实现=====================
-    // 用队列保存之前递归的所有小任务。
+    /**
+     *【题目】快速排序非递归实现
+     * 时间复杂度: o(N*logN)
+     * 额外空间复杂度: o(logN)
+     * 用队列保存之前递归的所有小任务。
+     */
     public static void quickSort2(int[] arr) {
         if (arr == null || arr.length < 2) {
             return;
@@ -67,6 +80,7 @@ public class _5_1_快速排序 {
             if (task.L >= task.R) {
                 continue;
             }
+            swap(arr, (int) (Math.random() * (task.R - task.L + 1)) + task.L, task.R);
             int[] partition = partition(arr, task.L, task.R);
             deque.addLast(new Task(task.L, partition[0]));
             deque.addLast(new Task(partition[1], task.R));
@@ -82,7 +96,6 @@ public class _5_1_快速排序 {
             R = r;
         }
     }
-
 
     public static void main(String[] args) {
         System.out.println("测试开始");
@@ -104,8 +117,5 @@ public class _5_1_快速排序 {
         }
         System.out.println("Nice");
     }
-
-
-    //===============【题目】快速排序 非递归实现=====================
 
 }
