@@ -20,25 +20,31 @@ public class _6_堆排序 {
         }
         for (int i = 1; i < arr.length; i++) {
             // 上浮
-            int targetIndex = i;
-            while (arr[targetIndex] > arr[(targetIndex - 1) / 2]) {
-                swap(arr, targetIndex, (targetIndex - 1) / 2);
-                targetIndex = (targetIndex - 1) / 2;
-            }
+            shangFu(arr, i);
         }
         for (int i = arr.length - 1; i > 0; i--) {
             swap(arr, 0, i); // 最大数和最后面的交换，相当于取出0位置的数
-            int targetIndex = 0;
-            int left = 1;
-            while (left < i) {
-                int maxChile = left + 1 < i && arr[left + 1] > arr[left] ? left + 1 : left;
-                if (arr[maxChile] <= arr[targetIndex]) {
-                    break;
-                }
-                swap(arr, targetIndex, maxChile);
-                targetIndex = maxChile;
-                left = targetIndex * 2 + 1;
+            xiaChen(arr, 0, i);
+        }
+    }
+
+    private static void shangFu(int[] arr, int index) {
+        while (arr[index] > arr[(index - 1) / 2]) {
+            swap(arr, index, (index - 1) / 2);
+            index = (index - 1) / 2;
+        }
+    }
+
+    private static void xiaChen(int[] arr, int index, int size) {
+        int left = index * 2 + 1;
+        while (left < size) {
+            int maxChild = left + 1 < size && arr[left + 1] > arr[left] ? left + 1 : left;
+            if (arr[index] >= arr[maxChild]) {
+                break;
             }
+            swap(arr, index, maxChild);
+            index = maxChild;
+            left = index * 2 + 1;
         }
     }
 
