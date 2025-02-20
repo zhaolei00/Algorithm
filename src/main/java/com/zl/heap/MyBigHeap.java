@@ -30,6 +30,9 @@ public class MyBigHeap implements Heap<Integer> {
         return size;
     }
 
+    /**
+     * 时间复杂度: o(logN)
+     */
     @Override
     public void add(Integer val) {
         if (size() == arr.length) {
@@ -43,6 +46,9 @@ public class MyBigHeap implements Heap<Integer> {
         }
     }
 
+    /**
+     * 时间复杂度: o(logN)
+     */
     @Override
     public Integer poll() {
         if (size() == 0) {
