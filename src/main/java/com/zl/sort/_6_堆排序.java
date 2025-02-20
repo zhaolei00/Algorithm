@@ -17,6 +17,8 @@ public class _6_堆排序 {
         if (arr == null || arr.length < 2) {
             return;
         }
+        // 从上往下建堆，时间复杂度o(N*logN)
+        // 从下往上建堆，时间复杂度o(N)
         for (int i = 1; i < arr.length; i++) {
             // 上浮
             shangFu(arr, i);
