@@ -1,6 +1,5 @@
 package com.zl.sort;
 
-import com.zl.tiku._4_随机数概率问题;
 import com.zl.tiku._99_对数器;
 
 import java.util.Arrays;
@@ -12,7 +11,7 @@ public class _6_堆排序 {
 
     /**
      * 时间复杂度: o(N*logN)
-     * @param arr
+     * 额外空间复杂度:
      */
     public static void heapSort(int[] arr) {
         if (arr == null || arr.length < 2) {
