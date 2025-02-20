@@ -36,6 +36,11 @@ public class _4_随机数概率问题 {
         return (int) (equalProbability1() * (N + 1));
     }
 
+    // 等概率返回[-N,N] 中的一个整数
+    public static int equalProbability6(int N) {
+        return equalProbability5(N) - equalProbability5(N);
+    }
+
     // [0, 1) 中，返回[0,x)的概率是x，现在要求是返回[0,x)的概率是x^2
     private static double equalProbability3() {
         return Math.max(equalProbability1(), equalProbability1());
