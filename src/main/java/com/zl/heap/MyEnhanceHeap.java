@@ -59,6 +59,11 @@ public class MyEnhanceHeap<T> implements Heap<T> {
     }
 
     @Override
+    public int getIndex(T t) {
+        return map.get(t);
+    }
+
+    @Override
     public void resign(T t) {
         Integer index = map.get(t);
         if (index == null) {
@@ -67,6 +72,18 @@ public class MyEnhanceHeap<T> implements Heap<T> {
         // 这里能同时用index，是因为上沉和下浮只能走一个。不然t所在的位置会随着上浮或下沉而变化。
         shangFu(index);
         xiaChen(index);
+    }
+
+    @Override
+    public void set(int index, T t) {
+        T old = list.set(index, t);
+        map.remove(old);
+        map.put(t, index);
+    }
+
+    @Override
+    public T get(int index) {
+        return list.get(index);
     }
 
     @Override
