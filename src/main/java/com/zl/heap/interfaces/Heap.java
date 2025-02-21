@@ -15,16 +15,22 @@ public interface Heap<V> {
 
     V peek();
 
-    boolean contains(V v);
+    default boolean contains(V v) {
+        throw new UnsupportedOperationException();
+    };
 
     /**
      * v元素改了，调整堆
      */
-    void resign(V v);
+    default void resign(V v) {
+        throw new UnsupportedOperationException();
+    };
 
     /**
      * 删除v元素
      */
-    void remove(V v);
+    default void remove(V v) {
+        throw new UnsupportedOperationException();
+    };
 
 }

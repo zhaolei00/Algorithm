@@ -4,7 +4,6 @@ import com.zl.heap.interfaces.Heap;
 import com.zl.tiku._4_随机数概率问题;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.PriorityQueue;
 
@@ -14,8 +13,6 @@ import java.util.PriorityQueue;
 public class MyBigHeap implements Heap<Integer> {
 
     private Integer[] arr;
-
-    private HashMap<Integer, Integer> map = new HashMap<>();
 
     private int size;
 
@@ -43,7 +40,6 @@ public class MyBigHeap implements Heap<Integer> {
         }
         int targetIndex = size;
         arr[size++] = val;
-        map.put(val, targetIndex);
         while (arr[targetIndex] > arr[(targetIndex - 1) / 2] ) {
             swap(arr, (targetIndex - 1) / 2, targetIndex);
             targetIndex = (targetIndex - 1) / 2;
@@ -61,7 +57,6 @@ public class MyBigHeap implements Heap<Integer> {
         Integer ans = arr[0];
         swap(arr, 0, --size);
         arr[size] = null; // help GC
-        map.remove(ans);
         // 下面的一个小数放到了根节点，需要下沉，找到合适的位置。
         // 从左右孩子找到大的孩子进行比较，如果它是大的不需要沉，此处正合适。否则进行交换下沉。
         int index = 0;
@@ -84,21 +79,6 @@ public class MyBigHeap implements Heap<Integer> {
         return arr[0];
     }
 
-    @Override
-    public boolean contains(Integer val) {
-        return map.containsKey(val);
-    }
-
-    @Override
-    public void resign(Integer integer) {
-
-    }
-
-    @Override
-    public void remove(Integer integer) {
-
-    }
-
     private void kuo() {
         Integer[] copy = new Integer[size * 2];
         for (int i = 0; i < arr.length; i++) {
@@ -108,8 +88,6 @@ public class MyBigHeap implements Heap<Integer> {
     }
 
     private void swap(Integer[] arr, int i, int j) {
-        map.put(arr[i], j);
-        map.put(arr[j], i);
         int temp = arr[i];
         arr[i] = arr[j];
         arr[j] = temp;
