@@ -21,28 +21,12 @@ public interface Heap<V> {
         throw new UnsupportedOperationException();
     };
 
-    default int getIndex(V v) {
-        throw new UnsupportedOperationException();
-    }
-
     /**
      * v元素改了，调整堆
      */
     default void resign(V v) {
         throw new UnsupportedOperationException();
     };
-
-    /**
-     * 设置index位置为V
-     * @param index
-     */
-    default void set(int index, V v) {
-        throw new UnsupportedOperationException();
-    }
-
-    default V get(int index) {
-        throw new UnsupportedOperationException();
-    }
 
     /**
      * 删除v元素
