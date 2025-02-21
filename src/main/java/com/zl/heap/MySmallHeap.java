@@ -71,6 +71,11 @@ public class MySmallHeap implements Heap<Integer> {
         return ans;
     }
 
+    @Override
+    public Integer peek() {
+        return arr[0];
+    }
+
     private void kuo() {
         Integer[] copy = new Integer[size * 2];
         for (int i = 0; i < arr.length; i++) {

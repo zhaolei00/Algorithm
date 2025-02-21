@@ -13,4 +13,6 @@ public interface Heap<V> {
 
     V poll();
 
+    V peek();
+
 }
