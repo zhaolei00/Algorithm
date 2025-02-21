@@ -11,7 +11,7 @@ public class _6_1_堆排序 {
 
     /**
      * 时间复杂度: o(N*logN)
-     * 额外空间复杂度:
+     * 额外空间复杂度: o(1)
      */
     public static void heapSort(int[] arr) {
         if (arr == null || arr.length < 2) {
