@@ -1,26 +1,29 @@
 package com.zl.tree;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * 前缀树
  */
 public class TrieTree {
 
-    private final TrieNode1 root = new TrieNode1();
+    private final TrieNode root = new TrieNode();
 
     public void add(String s) {
         if (s == null) {
             return;
         }
         char[] charArray = s.toCharArray();
-        TrieNode1 node = root;
-        int path;
+        TrieNode node = root;
+        Integer path;
         root.pass++;
         for (char c : charArray) {
             path = c - 'a';
-            if (node.nexts[path] == null) {
-                node.nexts[path] = new TrieNode1();
+            if (node.nexts.get(path) == null) {
+                node.nexts.put(path, new TrieNode());
             }
-            node = node.nexts[path];
+            node = node.nexts.get(path);
             node.pass++;
         }
         node.end++; // 最后一个为字符串结尾
@@ -33,17 +36,17 @@ public class TrieTree {
         if (select(s) == 0) {
             return;
         }
-        TrieNode1 node = root;
+        TrieNode node = root;
         root.pass--;
-        int path;
+        Integer path;
         for (char c : s.toCharArray()) {
             path = c - 'a';
             // 因为上面已经确定有了，这里没必要判空了
-            if (--node.nexts[path].pass == 0) {
-                node.nexts[path] = null;
+            if (--node.nexts.get(path).pass == 0) {
+                node.nexts.remove(path);
                 return; // 中间某个地方pass已经为0了，直接断掉，后面不用再继续了。
             }
-            node = node.nexts[path];
+            node = node.nexts.get(path);
         }
         node.end--;
     }
@@ -52,14 +55,14 @@ public class TrieTree {
         if (s == null) {
             return 0;
         }
-        TrieNode1 node = root;
+        TrieNode node = root;
         int path;
         for (char c : s.toCharArray()) {
             path = c - 'a';
-            if (node.nexts[path] == null) {
+            if (node.nexts.get(path) == null) {
                 return 0;
             }
-            node = node.nexts[path];
+            node = node.nexts.get(path);
         }
         return node.end;
     }
@@ -68,16 +71,24 @@ public class TrieTree {
         if (s == null) {
             return 0;
         }
-        TrieNode1 node = root;
+        TrieNode node = root;
         int path;
         for (char c : s.toCharArray()) {
             path = c - 'a';
-            if (node.nexts[path] == null) {
+            if (node.nexts.get(path) == null) {
                 return 0;
             }
-            node = node.nexts[path];
+            node = node.nexts.get(path);
         }
         return node.pass;
+    }
+
+
+    public static void main(String[] args) {
+        System.out.println((int) 'a');
+        System.out.println((int) 'z');
+        System.out.println((int) 'A');
+        System.out.println((int) 'Z');
     }
 
 
@@ -90,18 +101,13 @@ public class TrieTree {
 
 
 
-
-
-
-
-
-    private static class TrieNode1 {
+    private static class TrieNode {
         public int pass;
         public int end;
-        public TrieNode1[] nexts;
+        public Map<Integer, TrieNode> nexts;
 
-        public TrieNode1() {
-            this.nexts = new TrieNode1[26];
+        public TrieNode() {
+            this.nexts = new HashMap<>();
         }
     }
 
