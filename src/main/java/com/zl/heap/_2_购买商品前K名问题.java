@@ -33,6 +33,8 @@ public class _2_购买商品前K名问题 {
      *              b. 替换得奖区购买数量最少且最早进入得奖区的。
      *          规则五: 重复购买的用户，时间不会变。
      *          诉求: 每个事件到来时候，获得得奖区名单。
+     *  时间复杂度: o(N*logN)
+     *  额外空间复杂度: o(N)
      */
     public List<Integer> question(int[] arr, boolean[] op, int K) {
         if (arr == null || op == null
