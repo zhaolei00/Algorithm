@@ -4,6 +4,7 @@ import com.zl.heap.interfaces.Heap;
 import com.zl.tiku._4_随机数概率问题;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.PriorityQueue;
 
@@ -13,6 +14,8 @@ import java.util.PriorityQueue;
 public class MyBigHeap implements Heap<Integer> {
 
     private Integer[] arr;
+
+    private HashMap<Integer, Integer> map = new HashMap<>();
 
     private int size;
 
@@ -40,6 +43,7 @@ public class MyBigHeap implements Heap<Integer> {
         }
         int targetIndex = size;
         arr[size++] = val;
+        map.put(val, targetIndex);
         while (arr[targetIndex] > arr[(targetIndex - 1) / 2] ) {
             swap(arr, (targetIndex - 1) / 2, targetIndex);
             targetIndex = (targetIndex - 1) / 2;
@@ -57,6 +61,10 @@ public class MyBigHeap implements Heap<Integer> {
         Integer ans = arr[0];
         swap(arr, 0, --size);
         arr[size] = null; // help GC
+        map.remove(ans);
+        if (size > 0) {
+            map.put(arr[0], 0);
+        }
         // 下面的一个小数放到了根节点，需要下沉，找到合适的位置。
         // 从左右孩子找到大的孩子进行比较，如果它是大的不需要沉，此处正合适。否则进行交换下沉。
         int index = 0;
@@ -88,6 +96,8 @@ public class MyBigHeap implements Heap<Integer> {
     }
 
     private void swap(Integer[] arr, int i, int j) {
+        map.put(arr[i], j);
+        map.put(arr[j], i);
         int temp = arr[i];
         arr[i] = arr[j];
         arr[j] = temp;
@@ -98,7 +108,7 @@ public class MyBigHeap implements Heap<Integer> {
         System.out.println("测试开始");
         int times = 1000000;
         int maxValue = 1000;
-        int maxLength = 100;
+        int maxLength = 1000;
         boolean success = true;
         for (int i = 0; i < times; i++) {
             int length = _4_随机数概率问题.equalProbability5(maxLength) + 1;
