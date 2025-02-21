@@ -15,4 +15,16 @@ public interface Heap<V> {
 
     V peek();
 
+    boolean contains(V v);
+
+    /**
+     * v元素改了，调整堆
+     */
+    void resign(V v);
+
+    /**
+     * 删除v元素
+     */
+    void remove(V v);
+
 }

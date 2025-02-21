@@ -84,6 +84,21 @@ public class MyBigHeap implements Heap<Integer> {
         return arr[0];
     }
 
+    @Override
+    public boolean contains(Integer val) {
+        return map.containsKey(val);
+    }
+
+    @Override
+    public void resign(Integer integer) {
+
+    }
+
+    @Override
+    public void remove(Integer integer) {
+
+    }
+
     private void kuo() {
         Integer[] copy = new Integer[size * 2];
         for (int i = 0; i < arr.length; i++) {
