@@ -80,7 +80,7 @@ public class _2_购买商品前K名问题 {
                 no.add(player);
             }
         }
-        tiao(K);
+        tiao(time, K);
     }
 
     public void cancle(int id, int time, int K) {
@@ -107,22 +107,26 @@ public class _2_购买商品前K名问题 {
         else {
             return;
         }
-        tiao(K);
+        tiao(time, K);
     }
 
     // 候选区可能去得奖区
-    public void tiao(int K) {
+    public void tiao(int time, int K) {
         if (no.isEmpty()) {
             return;
         }
         if (yes.size() < K) {
-            yes.add(no.poll());
+            Player player = no.poll();
+            player.setTime(time);
+            yes.add(player);
             return;
         }
         // 调整
         Player noPlayer = no.peek();
         Player yesPlayer = yes.peek();
         if (noPlayer.getNum() > yesPlayer.getNum()) {
+            noPlayer.setTime(time);
+            yesPlayer.setTime(time);
             no.set(0, yesPlayer);
             yes.set(0, noPlayer);
             no.resign(yesPlayer);
