@@ -99,6 +99,11 @@ public class MyEnhanceHeap<T> implements Heap<T> {
         resign(target);
     }
 
+    @Override
+    public List<T> getAll() {
+        return new ArrayList<>(list);
+    }
+
     // 上浮
     private void shangFu(int targetIdx) {
         // 小于父节点

@@ -1,5 +1,7 @@
 package com.zl.heap.interfaces;
 
+import java.util.List;
+
 /**
  * 堆能力接口
  */
@@ -49,4 +51,7 @@ public interface Heap<V> {
         throw new UnsupportedOperationException();
     };
 
+    default List<V> getAll() {
+        throw new UnsupportedOperationException();
+    }
 }
