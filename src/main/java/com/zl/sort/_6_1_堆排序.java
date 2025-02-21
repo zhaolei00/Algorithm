@@ -7,7 +7,7 @@ import java.util.Arrays;
 /**
  * 堆排序只能用大根堆，小根堆在排序过程中，前面小的确定完，如果不移动，没办法表示成完全二叉树。
  */
-public class _6_堆排序 {
+public class _6_1_堆排序 {
 
     /**
      * 时间复杂度: o(N*logN)
