@@ -115,16 +115,13 @@ public class _2_购买商品前K名问题 {
             return;
         }
         // 调整
-        Player noPlayer = no.peek();
-        Player yesPlayer = yes.peek();
-        if (noPlayer.num > yesPlayer.num) {
+        if (no.peek().num > yes.peek().num) {
+            Player noPlayer = no.poll();
+            Player yesPlayer = yes.poll();
             noPlayer.time = time;
             yesPlayer.time = time;
-            // 节省一次resign
-            no.set(0, yesPlayer);
-            yes.set(0, noPlayer);
-            no.resign(yesPlayer);
-            yes.resign(noPlayer);
+            no.add(yesPlayer);
+            yes.add(noPlayer);
         }
     }
 
