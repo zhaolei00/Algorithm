@@ -8,7 +8,8 @@ public class _1_最大线段重合问题 {
 
     /**
      *【题目】线段用[L,R]数组表示，重合的线段大小>=1，求最多重合的线段数量
-     * 时间复杂度:
+     * 时间复杂度: o(N*logN)
+     * 额外空间复杂度: o(N)
      */
     public static int question(int[][] arr) {
         if (arr == null || arr.length == 0) {
