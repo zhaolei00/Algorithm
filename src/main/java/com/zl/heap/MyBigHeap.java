@@ -62,9 +62,6 @@ public class MyBigHeap implements Heap<Integer> {
         swap(arr, 0, --size);
         arr[size] = null; // help GC
         map.remove(ans);
-        if (size > 0) {
-            map.put(arr[0], 0);
-        }
         // 下面的一个小数放到了根节点，需要下沉，找到合适的位置。
         // 从左右孩子找到大的孩子进行比较，如果它是大的不需要沉，此处正合适。否则进行交换下沉。
         int index = 0;
