@@ -16,10 +16,10 @@ public class TrieTree {
         }
         char[] charArray = s.toCharArray();
         TrieNode node = root;
-        Integer path;
+        int path;
         root.pass++;
         for (char c : charArray) {
-            path = (int) c;
+            path = c;
             if (node.nexts.get(path) == null) {
                 node.nexts.put(path, new TrieNode());
             }
@@ -38,9 +38,9 @@ public class TrieTree {
         }
         TrieNode node = root;
         root.pass--;
-        Integer path;
+        int path;
         for (char c : s.toCharArray()) {
-            path = (int) c;
+            path = c;
             // 因为上面已经确定有了，这里没必要判空了
             if (--node.nexts.get(path).pass == 0) {
                 node.nexts.remove(path);
@@ -58,7 +58,7 @@ public class TrieTree {
         TrieNode node = root;
         int path;
         for (char c : s.toCharArray()) {
-            path = (int) c;
+            path = c;
             if (node.nexts.get(path) == null) {
                 return 0;
             }
@@ -74,7 +74,7 @@ public class TrieTree {
         TrieNode node = root;
         int path;
         for (char c : s.toCharArray()) {
-            path = (int) c;
+            path = c;
             if (node.nexts.get(path) == null) {
                 return 0;
             }
