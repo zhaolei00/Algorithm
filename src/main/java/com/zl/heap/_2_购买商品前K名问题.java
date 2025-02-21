@@ -92,7 +92,14 @@ public class _2_购买商品前K名问题 {
             } else {
                 no.remove(player);
             }
+        } else {
+            if (yes.contains(player)) {
+                yes.resign(player);
+            } else {
+                no.resign(player);
+            }
         }
+
         tiao(time, K);
     }
 
