@@ -1,8 +1,12 @@
 package com.zl.heap;
 
+import com.zl.tiku._99_对数器;
+
+import java.util.Arrays;
+
 /**
  */
-public class _2_商品购买前K名问题 {
+public class _2_购买商品前K名问题 {
 
     // 得奖区
     private MyEnhanceHeap<Player> yes = new MyEnhanceHeap<>(
@@ -80,7 +84,7 @@ public class _2_商品购买前K名问题 {
     }
 
     public void cancle(int id, int time, int K) {
-        Player player = new Player(id, time, 1);
+        Player player = new Player(id, time, 0);
         // 在获奖区
         if (yes.contains(player)) {
             int oldIndex = yes.getIndex(player);
@@ -108,7 +112,11 @@ public class _2_商品购买前K名问题 {
 
     // 候选区可能去得奖区
     public void tiao(int K) {
-        if (yes.size() < K || no.isEmpty()) {
+        if (no.isEmpty()) {
+            return;
+        }
+        if (yes.size() < K) {
+            yes.add(no.poll());
             return;
         }
         // 调整
@@ -120,6 +128,14 @@ public class _2_商品购买前K名问题 {
             no.resign(yesPlayer);
             yes.resign(noPlayer);
         }
+    }
+
+    public static void main(String[] args) {
+        int[] arr = new int[] {1,2,3,4,5, 2,1,4,3,2};
+        boolean[] op = new boolean[]{true, false, false, true, true, true, false, false, true, false};
+        _2_购买商品前K名问题 a = new _2_购买商品前K名问题();
+        int[] question = a.question(arr, op, 2);
+        System.out.println(Arrays.toString(question));
     }
 
     private static class Player {
@@ -156,6 +172,11 @@ public class _2_商品购买前K名问题 {
 
         public void setNum(int num) {
             this.num = num;
+        }
+
+        @Override
+        public int hashCode() {
+            return id;
         }
 
         @Override
