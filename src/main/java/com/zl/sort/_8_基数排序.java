@@ -22,7 +22,7 @@ public class _8_基数排序 {
             int[] help = new int[10];
             // 统计每位出现的次数
             for (int j : arr) {
-                help[getBitNum(j, i)]++;
+                help[getDigit(j, i)]++;
             }
             // 前缀和
             for (int j = 1; j < help.length; j++) {
@@ -30,7 +30,7 @@ public class _8_基数排序 {
             }
             // 根据前缀和，判断这个数该放哪
             for (int j = arr.length - 1; j >= 0; j--) {
-                int bitNum = getBitNum(arr[j], i);
+                int bitNum = getDigit(arr[j], i);
                 copy[help[bitNum] - 1] = arr[j];
                 help[bitNum]--;
             }
@@ -41,7 +41,7 @@ public class _8_基数排序 {
         }
     }
 
-    private static int getBitNum(int num, int bitCount) {
+    private static int getDigit(int num, int bitCount) {
         for (int i = 1; i < bitCount; i++) {
             num /= 10;
         }
