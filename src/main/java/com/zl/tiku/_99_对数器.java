@@ -27,6 +27,21 @@ public class _99_对数器 {
         return arr;
     }
 
+    public static ListNode copyLinked(ListNode head) {
+        if (head == null) {
+            return null;
+        }
+        ListNode ans = new ListNode(head.val);
+        ListNode temp = ans;
+        head = head.next;
+        while (head != null) {
+            temp.next = new ListNode(head.val);
+            temp = temp.next;
+            head = head.next;
+        }
+        return ans;
+    }
+
     public static int[] copyArray(int[] arr) {
         if (arr == null) {
             return null;
