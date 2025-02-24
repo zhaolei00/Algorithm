@@ -18,6 +18,7 @@ public class _14_快慢指针 {
             fast = fast.next.next;
             if (slow == fast) {
                 // 循环链表
+                return null;
             }
         }
         return slow;
