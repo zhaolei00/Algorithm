@@ -24,7 +24,7 @@ public class _18_链表相交问题 {
 
         // 环前相交
         if (ring1 == ring2) {
-            return jiaoNotRing(head1, head2, ring1);
+            return jiaoNotRing(head1, head2, ring1.next);
         }
         ListNode temp = ring1.next;
         while (temp != ring1) {
