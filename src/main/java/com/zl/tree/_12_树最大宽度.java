@@ -20,10 +20,10 @@ public class _12_树最大宽度 {
             for (int i = 0; i < size; i++) {
                 TreeNode poll = queue.poll();
                 if (poll.left != null) {
-                    queue.add(poll);
+                    queue.add(poll.left);
                 }
                 if (poll.right != null) {
-                    queue.add(poll);
+                    queue.add(poll.right);
                 }
             }
         }
