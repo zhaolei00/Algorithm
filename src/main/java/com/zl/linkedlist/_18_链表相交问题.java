@@ -94,8 +94,4 @@ public class _18_链表相交问题 {
         return minHead;
     }
 
-    private ListNode jiaoHaveRing(ListNode ringA, ListNode ringB) {
-
-    }
-
 }
