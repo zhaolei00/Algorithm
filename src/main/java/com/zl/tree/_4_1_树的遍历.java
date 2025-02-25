@@ -4,7 +4,7 @@ import java.util.*;
 
 /**
  */
-public class _4_树的遍历 {
+public class _4_1_树的遍历 {
 
     // 先序遍历 先父
     public static void xian(TreeNode root) {
