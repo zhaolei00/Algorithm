@@ -15,13 +15,27 @@ public class _18_链表相交问题 {
         ListNode ring2 = ringFirstNode(head2);
         // 两个无环计算相交节点
         if (ring1 == null && ring2 == null) {
-            return jiaoNotRing(head1, head2);
+            return jiaoNotRing(head1, head2, null);
         }
         // 一个有环，一个无环，一定没有相交节点
         if (ring1 == null || ring2 == null) {
             return null;
         }
 
+        // 环前相交
+        if (ring1 == ring2) {
+            return jiaoNotRing(head1, head2, ring1.next);
+        }
+        ListNode temp = ring1.next;
+        while (temp != ring1) {
+            // 有相交，在环的不同点，返回其中一个即可。
+            if (temp == ring2) {
+                return temp;
+            }
+            temp = temp.next;
+        }
+        // 两个环无相交
+        return null;
     }
 
     private ListNode ringFirstNode(ListNode head) {
@@ -46,7 +60,7 @@ public class _18_链表相交问题 {
         return slow;
     }
 
-    private ListNode jiaoNotRing(ListNode head1, ListNode head2) {
+    private ListNode jiaoNotRing(ListNode head1, ListNode head2, ListNode targetNode) {
         if (head1 == null || head2 == null) {
             return null;
         }
@@ -54,11 +68,11 @@ public class _18_链表相交问题 {
         ListNode tail2 = head2;
         int size1 = 1;
         int size2 = 1;
-        while (tail1.next != null) {
+        while (tail1.next != targetNode) {
             tail1 = tail1.next;
             size1++;
         }
-        while (tail2.next != null) {
+        while (tail2.next != targetNode) {
             tail2 = tail2.next;
             size2++;
         }
@@ -80,7 +94,7 @@ public class _18_链表相交问题 {
         return minHead;
     }
 
-    private ListNode jiaoHaveRing(ListNode headA, ListNode headB) {
+    private ListNode jiaoHaveRing(ListNode ringA, ListNode ringB) {
 
     }
 
