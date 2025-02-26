@@ -3,12 +3,15 @@ package com.zl.tree;
 /**
  * //===============【题目】二叉树是否为平衡搜索二叉树 就是平衡二叉树和搜索二叉树的结合 =====================
  */
-public class _6_判断是否为二叉搜索树 {
+public class _6_2_判断是否为二叉搜索树 {
 
     //===============【题目】二叉树是否为搜索二叉树=====================
     // 思路1: 中序遍历的结果是否有序。
     // 思路2: 递归
     public static boolean isSearchTree(TreeNode root) {
+        if (root == null) {
+            return true;
+        }
         return getInfo(root).isSearch;
     }
 
@@ -23,7 +26,7 @@ public class _6_判断是否为二叉搜索树 {
         if (leftInfo != null) {
             min = Math.min(min, leftInfo.min);
             max = Math.max(max, leftInfo.max);
-            isSearch = isSearch && leftInfo.isSearch && root.val > leftInfo.max;
+            isSearch = leftInfo.isSearch && root.val > leftInfo.max;
         }
         Info rightInfo = getInfo(root.right);
         if (rightInfo != null) {
