@@ -16,6 +16,7 @@ public class _2_岛问题 {
 
     // 给定一个m*n的二维数组，positions是一个[[0,1],[3,4],[4,3]]这样的二维数组，代表此位置为1。
     // 求每加一个位置，此时的岛数量。
+    // 有两种方式，一种数组，一种HashMap(当二维数组很大的情况下用)。
     public static List<Integer> landsNum2(int m, int n, int[][] positions) {
         return null;
     }
