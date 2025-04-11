@@ -10,7 +10,7 @@ public class _2_岛问题 {
     // 有两种思路:
     //      第一种: 感染方式
     //      第二种: 并查集方式
-    public static int landsNum(char[][] a) {
+    public static int landsNum1(char[][] a) {
         return 0;
     }
 
@@ -18,5 +18,10 @@ public class _2_岛问题 {
     // 求每加一个位置，此时的岛数量。
     public static List<Integer> landsNum2(int m, int n, int[][] positions) {
         return null;
+    }
+
+    // 在1的基础上，如何实现并发的计算。
+    public static int landsNum3(char[][] a) {
+        return 0;
     }
 }
