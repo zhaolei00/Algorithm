@@ -44,8 +44,11 @@ public class UnionFind {
                 stack.push(cur);
                 cur = parent.get(cur);
             }
-            while (!stack.isEmpty()) {
-                parent.put(stack.pop(), cur);
+            // 只有一个时，不需要重新添加父亲，添加也是白添加。
+            if (stack.size() > 1) {
+                while (!stack.isEmpty()) {
+                    parent.put(stack.pop(), cur);
+                }
             }
             return cur;
         }
