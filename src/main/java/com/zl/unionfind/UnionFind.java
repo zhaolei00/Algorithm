@@ -17,6 +17,7 @@ public class UnionFind {
 
     // 还有数组实现，数组实现适用于V是int值。
     //      否则还需要个map还记录数组位置代表的是哪个元素。或者能根据一个公式，映射成对应位置。
+    //      这是两个策略。在数组很小的时候，用数组。如果很大，用HashMap。
     public static class UnionSet<V> {
         private final Map<V, UnionNode<V>> nodes;
 
