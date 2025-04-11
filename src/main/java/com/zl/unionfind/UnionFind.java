@@ -3,6 +3,7 @@ package com.zl.unionfind;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Stack;
 
 public class UnionFind {
 
@@ -38,8 +39,13 @@ public class UnionFind {
 
         // 找到代表节点
         private UnionNode<V> findFather(UnionNode<V> cur) {
+            Stack<UnionNode<V>> stack = new Stack<>();
             while (cur != parent.get(cur)) {
+                stack.push(cur);
                 cur = parent.get(cur);
+            }
+            while (!stack.isEmpty()) {
+                parent.put(stack.pop(), cur);
             }
             return cur;
         }
