@@ -15,6 +15,7 @@ public class UnionFind {
         }
     }
 
+    // 还有数组实现，数组实现适用于V是int值。否则还需要个map还记录数组位置代表的是哪个元素。
     public static class UnionSet<V> {
         private final Map<V, UnionNode<V>> nodes;
 
@@ -71,6 +72,70 @@ public class UnionFind {
             parent.put(smallNode, bigNode);
             sizeMap.put(bigNode, sizeA + sizeB);
             sizeMap.remove(smallNode);
+        }
+
+        public int size() {
+            return sizeMap.size();
+        }
+    }
+
+    public static class UnionSet1 {
+        // i 位置的父亲在哪个位置
+        private final int[] parent;
+        // i 位置的集合大小
+        private final int[] size;
+
+        private final int[] help;
+
+        // 集合数量
+        private int setNum;
+
+        public UnionSet1(int n) {
+            parent = new int[n];
+            size = new int[n];
+            help = new int[n];
+            setNum = n;
+            for (int i = 0; i < n; i++) {
+                parent[i] = i;
+                size[i] = 1;
+            }
+        }
+
+        // 找到代表节点
+        private int findFather(int cur) {
+            int h = 0;
+            while (cur != parent[cur]) {
+                help[h++] = cur;
+                cur = parent[cur];
+            }
+            for (int i = h - 1; i >= 0; i--) {
+                parent[help[i]] = cur;
+            }
+            return cur;
+        }
+
+        public boolean isSameSet(int a, int b) {
+            return findFather(a) == findFather(b);
+        }
+
+        public void union(int a, int b) {
+            int fatherA = findFather(a);
+            int fatherB = findFather(b);
+            if (fatherA == fatherB) {
+                return;
+            }
+            int sizeA = size[fatherA];
+            int sizeB = size[fatherB];
+            int small = sizeA < sizeB ? fatherA : fatherB;
+            int big = small == fatherA ? fatherB : fatherA;
+            parent[small] = big;
+            size[big] = sizeA + sizeB;
+            size[small] = 0;
+            setNum--;
+        }
+
+        public int size() {
+            return setNum;
         }
     }
 
